@@ -8,7 +8,6 @@ import { TextureLoader } from "three";
 import { RGBELoader } from "three-stdlib";
 import ColorChanger from "../components/ColorChanger";
 
-
 const modelMap = {
     levante: {
         modalPath: '/src/assets/glb/levante.glb',
@@ -85,7 +84,7 @@ function MyScene2({...props}) {
             distance={30}
             anglePower={10}
             attenuation={5}
-            castShadow
+
             {...props}
         />
     );
@@ -104,6 +103,10 @@ export default function Showroom({product}) {
             key={product}
             className="w-[100vw] h-[100vh]"
             >
+                {/* <Environment
+                files="/src/assets/glb/environment_back.hdr" // HDR 이미지
+                background={true} // 배경으로 사용
+                /> */}
                 <color attach="background" args={['#fafafa']} />
                 <ambientLight intensity={0.6} color={'0xffffff'}></ambientLight>
                 <MyScene2 color="0xffffff" position={[-5,5,-5]} intensity={150}></MyScene2>
@@ -123,6 +126,20 @@ export default function Showroom({product}) {
                         preset={null}
                     />
                 </Suspense>
+                /* 옆면 벽 */
+                <mesh rotation-x={Math.PI} rotation-y={(Math.PI / 2)} position={[-2,0.7,0]}>
+                    <planeGeometry args={[6,3]}/>
+                </mesh>
+                /* 뒷면 벽 */
+                <mesh position={[0,0.7,-3]}>
+                    <planeGeometry args={[4,3]}/>
+                </mesh>
+                <mesh rotation-x={-Math.PI / 2} position={[0,-0.8,0]} receiveShadow>
+                    <planeGeometry args={[4, 6]} />
+                    /* 하나의 메쉬에 하나의 머터리얼만 가능 */
+                    <meshStandardMaterial color="#757575" roughness={0.01} metalness={0.3} />
+
+                </mesh>
                 <OrbitControls></OrbitControls>
             </Canvas>
             <ColorChanger selectedColor={setColors} product={product}/>
