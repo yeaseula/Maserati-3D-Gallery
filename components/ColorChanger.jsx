@@ -8,13 +8,13 @@ export default function ColorChanger ({selectedColor,product}) {
                 datacolor:'#021850',
                 datatext:'Blu Nobile',
                 realcolor:'#021850',
-                default:false
+                default:true
             },
             {
                 datacolor:'#a81710',
                 datatext:'ROSSO Potente',
                 realcolor:'#a81710',
-                default:true
+                default:false
             },
             {
                 datacolor:'#898384',

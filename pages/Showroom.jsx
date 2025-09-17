@@ -94,7 +94,7 @@ function MyScene2({...props}) {
 export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
-    const [colors,setColors] = useState('')
+    const [colors,setColors] = useState('#021850')
     const [text,setText] = useState(`levante`)
 
     return (
