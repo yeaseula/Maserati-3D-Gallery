@@ -1,7 +1,7 @@
 import React from "react";
 import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
 import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls, Environment, useGLTF, useHelper } from "@react-three/drei";
+import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SpotLight, SpotLightHelper } from 'three';
 import { TextureLoader } from "three";
@@ -20,7 +20,6 @@ const modelMap = {
 
 function ProductCall({modalPath,position,scale,rotation,colors}) {
     const gltf = useGLTF(modalPath);
-    const roughMap = useLoader(TextureLoader,'/image/metal3.jpg')
 
     useMemo(() => {
         gltf.scene.traverse((child) => {
@@ -90,6 +89,16 @@ function MyScene2({...props}) {
     );
 }
 
+function Window(){
+    const treeTexture = useTexture('/src/assets/images/tree-background.jpg')
+    return(
+        <mesh rotation-y={(Math.PI / 2)} position={[-1.9,0.7,0]}>
+            <planeGeometry args={[5,2]}/>
+            <meshBasicMaterial map={treeTexture}/>
+        </mesh>
+    )
+}
+
 export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
@@ -103,14 +112,10 @@ export default function Showroom({product}) {
             key={product}
             className="w-[100vw] h-[100vh]"
             >
-                {/* <Environment
-                files="/src/assets/glb/environment_back.hdr" // HDR 이미지
-                background={true} // 배경으로 사용
-                /> */}
                 <color attach="background" args={['#fafafa']} />
                 <ambientLight intensity={0.6} color={'0xffffff'}></ambientLight>
-                <MyScene2 color="0xffffff" position={[-5,5,-5]} intensity={150}></MyScene2>
-                <MyScene color="#c27aff" position={[4, 4, 4]} intensity={LightPower}></MyScene>
+                <MyScene2 color="gold" position={[-5,5,-5]} intensity={120}></MyScene2>
+                <MyScene color="gold" position={[4, 4, 4]} intensity={LightPower}></MyScene>
                 <Suspense fallback={null}>
                     <ProductCall
                     modalPath={modalPath.modalPath}
@@ -130,6 +135,7 @@ export default function Showroom({product}) {
                 <mesh rotation-x={Math.PI} rotation-y={(Math.PI / 2)} position={[-2,0.7,0]}>
                     <planeGeometry args={[6,3]}/>
                 </mesh>
+                <Window/>
                 /* 뒷면 벽 */
                 <mesh position={[0,0.7,-3]}>
                     <planeGeometry args={[4,3]}/>
