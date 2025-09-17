@@ -5,22 +5,10 @@ export default function ColorChanger ({selectedColor,product}) {
     const ColorChart = {
         levante: [
             {
-                datacolor:'#021850',
-                datatext:'Blu Nobile',
-                realcolor:'#021850',
-                default:true
-            },
-            {
-                datacolor:'#a81710',
-                datatext:'ROSSO Potente',
-                realcolor:'#a81710',
-                default:false
-            },
-            {
                 datacolor:'#898384',
                 datatext:'Grigio',
                 realcolor:'#898384',
-                default:false
+                default:true
             },
             {
                 datacolor:'#DDDDDD',
@@ -38,6 +26,18 @@ export default function ColorChanger ({selectedColor,product}) {
                 datacolor:'#433837',
                 datatext:'Rame',
                 realcolor:'#433837',
+                default:false
+            },
+            {
+                datacolor:'#021850',
+                datatext:'Blu Nobile',
+                realcolor:'#021850',
+                default:false
+            },
+            {
+                datacolor:'#a81710',
+                datatext:'ROSSO Potente',
+                realcolor:'#a81710',
                 default:false
             },
         ]
