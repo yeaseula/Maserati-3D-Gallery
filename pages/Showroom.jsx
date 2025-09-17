@@ -159,8 +159,34 @@ export default function Showroom({product}) {
                 </mesh>
                 <mesh rotation-y={(Math.PI / 2)} position={[-1.88,0.7,2.8]}>
                     <boxGeometry args={[0.12,2.6,0.04]}/>
-                    <meshBasicMaterial
-                        color="#ffffff"
+                    <meshStandardMaterial
+                        color="#bdbdbd"
+                        metalness={1}
+                        roughness={0.5}
+                    />
+                </mesh>
+                <mesh rotation-y={(Math.PI / 2)} position={[-1.88,0.7,-2.8]}>
+                    <boxGeometry args={[0.12,2.6,0.04]}/>
+                    <meshStandardMaterial
+                        color="#bdbdbd"
+                        metalness={1}
+                        roughness={0.5}
+                    />
+                </mesh>
+                <mesh rotation-y={(Math.PI / 2)} position={[-1.88,-0.6,0]}>
+                    <boxGeometry args={[5.72,0.12,0.04]}/>
+                    <meshStandardMaterial
+                        color="#bdbdbd"
+                        metalness={1}
+                        roughness={0.5}
+                    />
+                </mesh>
+                <mesh rotation-y={(Math.PI / 2)} position={[-1.88,2,0]}>
+                    <boxGeometry args={[5.72,0.12,0.04]}/>
+                    <meshStandardMaterial
+                        color="#bdbdbd"
+                        metalness={1}
+                        roughness={0.5}
                     />
                 </mesh>
                 /* 뒷면 벽 */
