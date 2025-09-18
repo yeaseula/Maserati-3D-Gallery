@@ -134,6 +134,17 @@ function Window(){
     )
 }
 
+function LogoWall() {
+    const logoImage = useTexture('/src/assets/images/maserati-logo.png')
+    const aspect = logoImage.image.width / logoImage.image.height;
+    return (
+        <mesh position={[0,1,-2.8]}>
+            <planeGeometry args={[1.4 * aspect,1.4]}></planeGeometry>
+            <meshBasicMaterial map={logoImage} color={'white'} transparent/>
+        </mesh>
+    )
+}
+
 export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
@@ -224,6 +235,7 @@ export default function Showroom({product}) {
                     />
                 </mesh>
                 /* 뒷면 벽 */
+                <LogoWall/>
                 <mesh position={[0,0.7,-3]}>
                     <planeGeometry args={[4,3]}/>
                     <meshStandardMaterial
