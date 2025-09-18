@@ -43,22 +43,40 @@ export default function ColorChanger ({selectedColor,product}) {
         ],
         cielo: [
             {
-                datacolor:'#ffffff',
-                datatext:'white',
-                realcolor:'#ffffff',
+                datacolor:'#a1a8af',
+                datatext:'Grigio lncognito',
+                realcolor:'#a1a8af',
                 default:true
             },
             {
-                datacolor:'#000000',
-                datatext:'Bianco',
-                realcolor:'#000000',
+                datacolor:'#4e5359',
+                datatext:'Grigio Mistero',
+                realcolor:'#4e5359',
+                default:false
+            },
+            {
+                datacolor:'#94020f',
+                datatext:'Rosso Vincente',
+                realcolor:'#94020f',
+                default:false
+            },
+            {
+                datacolor:'#00049b',
+                datatext:'Blu Infinito',
+                realcolor:'#00049b',
+                default:false
+            },
+            {
+                datacolor:'#d0a733',
+                datatext:'Giallo Genio',
+                realcolor:'#d0a733',
                 default:false
             },
         ]
     }
     const defaultText = {
-        lavente : 'Grigio',
-        cielo : '미정'
+        levante : 'Grigio',
+        cielo : 'Grigio lncognito'
     }
 
     const targetProduct = ColorChart[product]
@@ -90,7 +108,7 @@ export default function ColorChanger ({selectedColor,product}) {
                 </ul>
             </div>
             <p className="model-descript text-center text-sm fixed bottom-5.5 left-[50%] z-99 translate-x-[-50%]">
-                {product ? targetProduct.datatext : defaultsText}
+                {defaultsText}
             </p>
         </div>
     )
