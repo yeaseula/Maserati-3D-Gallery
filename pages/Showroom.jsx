@@ -28,7 +28,7 @@ function ProductCall({modalPath,position,scale,rotation,colors}) {
             const meshname = child.name.toLowerCase();
             if(meshname.includes('hood') || (meshname.includes('door') && meshname.includes('levante')) ||
             (meshname.includes('rear') && meshname.includes('004')) || (meshname.includes('frontkit') && meshname.includes('gts_001'))){
-                child.material = new THREE.MeshPhysicalMaterial({
+                child.material = new THREE.MeshStandardMaterial({
                     color:colors,
                     metalness: 0.2,
                     roughness: 0.1,
@@ -39,6 +39,20 @@ function ProductCall({modalPath,position,scale,rotation,colors}) {
                     ior: 1.2,
                     reflectivity: 0.8
                 });
+            }
+            if(meshname.includes('glass')){
+                child.material = new THREE.MeshPhysicalMaterial({
+                    color:'white',
+                    metalness:0,
+                    clearcoat:1,
+                    clearcoatRoughness:0.2,
+                    transmission:1,
+                    reflectivity:0.5,
+                    opacity:0.4,
+                    transparent:0,
+                    thickness:0.3,
+                    ior:1.2,
+                })
             }
 
             child.castShadow = true;
@@ -102,7 +116,7 @@ function Window(){
 export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
-    const [colors,setColors] = useState('#021850')
+    const [colors,setColors] = useState('#898384')
     const [text,setText] = useState(`levante`)
 
     return (
