@@ -117,7 +117,6 @@ export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#898384')
-    const [text,setText] = useState(`levante`)
 
     return (
         <div className="w-[100vw] h-[100vh]">

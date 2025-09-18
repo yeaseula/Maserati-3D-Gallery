@@ -43,7 +43,7 @@ export default function ColorChanger ({selectedColor,product}) {
         ]
     }
     const defaultText = {
-        lavente : 'Nero'
+        lavente : 'Grigio'
     }
 
     const targetProduct = ColorChart[product]
@@ -74,7 +74,9 @@ export default function ColorChanger ({selectedColor,product}) {
                     ))}
                 </ul>
             </div>
-            <p className="model-descript text-center text-white text-sm fixed bottom-5.5 left-[50%] z-99 translate-x-[-50%]">{defaultsText}</p>
+            <p className="model-descript text-center text-sm fixed bottom-5.5 left-[50%] z-99 translate-x-[-50%]">
+                {product ? targetProduct.datatext : defaultsText}
+            </p>
         </div>
     )
 }
