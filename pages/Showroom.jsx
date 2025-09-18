@@ -15,6 +15,13 @@ const modelMap = {
         scale:[100,100,100],
         rotation:[0,(-Math.PI / 2) + 1.45, 0],
         lightpower:20
+    },
+    cielo: {
+        modalPath: '/src/assets/glb/cielo.glb',
+        position: [0,-0.75,0],
+        scale:[108,108,108],
+        rotation:[0,(-Math.PI / 2) + 1.45, 0],
+        lightpower:20
     }
 }
 
@@ -40,7 +47,7 @@ function ProductCall({modalPath,position,scale,rotation,colors}) {
                     reflectivity: 0.8
                 });
             }
-            if(meshname.includes('glass')){
+            if(meshname.includes('glass') || meshname.includes('window')){
                 child.material = new THREE.MeshPhysicalMaterial({
                     color:'white',
                     metalness:0,
@@ -48,11 +55,25 @@ function ProductCall({modalPath,position,scale,rotation,colors}) {
                     clearcoatRoughness:0.2,
                     transmission:1,
                     reflectivity:0.5,
-                    opacity:0.4,
+                    opacity:0.3,
                     transparent:0,
                     thickness:0.3,
                     ior:1.2,
                 })
+            }
+            //cielo 모델 추후 분리
+            if(meshname.includes('lodabody')){
+                child.material = new THREE.MeshStandardMaterial({
+                    color:colors,
+                    metalness: 0.2,
+                    roughness: 0.1,
+                    clearcoat: 1,
+                    clearcoatRoughness: 0.03,
+                    transmission: 0.2,
+                    thickness: 0.8,
+                    ior: 1.2,
+                    reflectivity: 0.8
+                });
             }
 
             child.castShadow = true;

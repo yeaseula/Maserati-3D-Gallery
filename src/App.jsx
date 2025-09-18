@@ -10,6 +10,7 @@ function App() {
             <NavBar />
             <Routes>
                 <Route path="/" element={<Showroom key="levante" product="levante"/>} />
+                <Route path="/cielo" element={<Showroom key="cielo" product="cielo"/>} />
             </Routes>
         </BrowserRouter>
   )

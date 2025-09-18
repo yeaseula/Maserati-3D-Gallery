@@ -40,10 +40,25 @@ export default function ColorChanger ({selectedColor,product}) {
                 realcolor:'#a81710',
                 default:false
             },
+        ],
+        cielo: [
+            {
+                datacolor:'#ffffff',
+                datatext:'white',
+                realcolor:'#ffffff',
+                default:true
+            },
+            {
+                datacolor:'#000000',
+                datatext:'Bianco',
+                realcolor:'#000000',
+                default:false
+            },
         ]
     }
     const defaultText = {
-        lavente : 'Grigio'
+        lavente : 'Grigio',
+        cielo : '미정'
     }
 
     const targetProduct = ColorChart[product]
