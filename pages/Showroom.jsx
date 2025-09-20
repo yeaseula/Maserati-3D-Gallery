@@ -150,12 +150,16 @@ function LogoWall() {
     )
 }
 
-export default function Showroom({product}) {
+export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#898384')
     const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
     const [calliper,setCalliper] = useState('#314aad')
+
+    useEffect(()=>{
+        setCurrentLocation(product)
+    },[product])
 
     return (
         <div className="w-[100vw] h-[100vh]">
