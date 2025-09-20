@@ -6,7 +6,7 @@ import * as THREE from "three";
 import { SpotLight, SpotLightHelper } from 'three';
 import { TextureLoader } from "three";
 import { RGBELoader } from "three-stdlib";
-import ColorChanger from "../components/ColorChanger";
+import ChangerMenu from "../components/ChangerMenu";
 
 const modelMap = {
     levante: {
@@ -124,8 +124,8 @@ function MyScene2({...props}) {
     );
 }
 
-function Window(){
-    const treeTexture = useTexture('/src/assets/images/tree-background.jpg')
+function Window({window}){
+    const treeTexture = useTexture(window)
     return(
         <mesh rotation-y={(Math.PI / 2)} position={[-1.9,0.7,0]}>
             <planeGeometry args={[5.6,2.6]}/>
@@ -149,6 +149,7 @@ export default function Showroom({product}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#898384')
+    const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
 
     return (
         <div className="w-[100vw] h-[100vh]">
@@ -185,7 +186,7 @@ export default function Showroom({product}) {
                         metalness={0.6}
                     />
                 </mesh>
-                <Window/>
+                <Window window={window}/>
                 <mesh rotation-y={(Math.PI / 2)} position={[-1.87,0.7,0]}>
                     <boxGeometry args={[5.6,2.6,0]} />
                     <meshPhysicalMaterial
@@ -251,7 +252,7 @@ export default function Showroom({product}) {
                 </mesh>
                 <OrbitControls></OrbitControls>
             </Canvas>
-            <ColorChanger selectedColor={setColors} product={product}/>
+            <ChangerMenu selectedColor={setColors} product={product} selectedWindow={setWindow}/>
         </div>
     )
 }
