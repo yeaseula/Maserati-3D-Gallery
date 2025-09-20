@@ -7,6 +7,7 @@ import { SpotLight, SpotLightHelper } from 'three';
 import { TextureLoader } from "three";
 import { RGBELoader } from "three-stdlib";
 import ChangerMenu from "../components/ChangerMenu";
+import { call } from "three/tsl";
 
 const modelMap = {
     levante: {
@@ -25,7 +26,7 @@ const modelMap = {
     }
 }
 
-function ProductCall({modalPath,position,scale,rotation,colors}) {
+function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
     const gltf = useGLTF(modalPath);
 
     useMemo(() => {
@@ -75,11 +76,16 @@ function ProductCall({modalPath,position,scale,rotation,colors}) {
                     reflectivity: 0.8
                 });
             }
+            if(meshname.includes('calliper') || meshname.includes('caliper')){
+                child.material = new THREE.MeshStandardMaterial({
+                    color:calliper
+                })
+            }
 
             child.castShadow = true;
             child.receiveShadow = false;
         });
-    }, [gltf,colors]);
+    }, [gltf,colors,calliper]);
 
     return (
         <group scale={scale} position={position} rotation={rotation}>
@@ -150,6 +156,7 @@ export default function Showroom({product}) {
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#898384')
     const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
+    const [calliper,setCalliper] = useState('#314aad')
 
     return (
         <div className="w-[100vw] h-[100vh]">
@@ -170,6 +177,7 @@ export default function Showroom({product}) {
                     scale={modalPath.scale}
                     rotation={modalPath.rotation}
                     colors={colors}
+                    calliper={calliper}
                     ></ProductCall>
                     <Environment
                         files="/src/assets/hdr/tree-background.hdr"
@@ -252,7 +260,11 @@ export default function Showroom({product}) {
                 </mesh>
                 <OrbitControls></OrbitControls>
             </Canvas>
-            <ChangerMenu selectedColor={setColors} product={product} selectedWindow={setWindow}/>
+            <ChangerMenu
+            selectedColor={setColors}
+            product={product}
+            selectedWindow={setWindow}
+            selectedCalliper={setCalliper}/>
         </div>
     )
 }
