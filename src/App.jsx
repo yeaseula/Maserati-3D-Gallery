@@ -1,19 +1,31 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 
 function App() {
-  const [currentlocation,setCurrentLocation] = useState('levante')
   return (
-        <BrowserRouter>
+    <BrowserRouter>
+      <AppInner />
+    </BrowserRouter>
+  );
+}
+
+function AppInner() {
+  const location = useLocation();
+  const [currentlocation,setCurrentLocation] = useState('levante');
+
+  useEffect(()=>{
+    if (location.pathname === '/cielo') setCurrentLocation('cielo');
+    else setCurrentLocation('levante');
+  },[location.pathname])
+
+  return (
+        <>
             <NavBar currentlocation={currentlocation}/>
-            <Routes>
-                <Route path="/" element={<Showroom key="levante" product="levante" setCurrentLocation={setCurrentLocation}/>} />
-                <Route path="/cielo" element={<Showroom key="cielo" product="cielo" setCurrentLocation={setCurrentLocation}/>} />
-            </Routes>
-        </BrowserRouter>
+            <Showroom product={currentlocation} setCurrentLocation={setCurrentLocation}/>
+        </>
   )
 }
 

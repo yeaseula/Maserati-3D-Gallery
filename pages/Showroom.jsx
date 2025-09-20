@@ -5,7 +5,6 @@ import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@rea
 import * as THREE from "three";
 import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 import ChangerMenu from "../components/ChangerMenu";
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 const modelMap = {
     levante: {
@@ -23,7 +22,8 @@ const modelMap = {
         lightpower:20
     }
 }
-
+useGLTF.preload('/src/assets/glb/optimized/levante.glb');
+useGLTF.preload('/src/assets/glb/optimized/cielo.glb');
 function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
     const gltf = useGLTF(modalPath);
 
@@ -131,7 +131,7 @@ function MyScene2({...props}) {
 useTexture.preload('/src/assets/images/tree-background.jpg');
 useTexture.preload('/src/assets/images/tree-background2.jpg');
 useTexture.preload('/src/assets/images/city.jpg');
-useTexture.preload('/src/assets/images/city2.jpg');
+useTexture.preload('/src/assets/images/city2ㅐ.jpg');
 
 function Window({window}){
     const treeTexture = useTexture(window)
@@ -169,7 +169,7 @@ export default function Showroom({product,setCurrentLocation}) {
         <div className="w-[100vw] h-[100vh]">
             <Canvas shadows
             camera={{ position:[5,1,5], fov:50 }}
-            key={product}
+
             className="w-[100vw] h-[100vh]"
             >
                 <color attach="background" args={['#fafafa']} />
