@@ -3,8 +3,7 @@ import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
 import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@react-three/drei";
 import * as THREE from "three";
-import { SpotLight, SpotLightHelper } from 'three';
-import { TextureLoader } from "three";
+import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 import ChangerMenu from "../components/ChangerMenu";
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
@@ -128,6 +127,11 @@ function MyScene2({...props}) {
         />
     );
 }
+
+useTexture.preload('/src/assets/images/tree-background.jpg');
+useTexture.preload('/src/assets/images/tree-background2.jpg');
+useTexture.preload('/src/assets/images/city.jpg');
+useTexture.preload('/src/assets/images/city2.jpg');
 
 function Window({window}){
     const treeTexture = useTexture(window)
