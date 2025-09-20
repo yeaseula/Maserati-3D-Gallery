@@ -88,11 +88,11 @@ export default function ColorChanger ({selectedColor,product}) {
         selectedColor(targetColor)
         const ul = document.querySelectorAll('ul li')
         ul.forEach((ele,idx)=>{
-            if(ele.classList.contains('border-2','border-purple-300')) {
-                ele.classList.remove('border-2','border-purple-300')
+            if(ele.classList.contains('border-3','border-yellow-700')) {
+                ele.classList.remove('border-3','border-yellow-700')
             }
         })
-        e.currentTarget.classList.add('border-2','border-purple-300')
+        e.currentTarget.classList.add('border-3','border-yellow-700')
 
         const modelDescript = document.querySelector('.model-descript');
         modelDescript.textContent=targetText
@@ -100,16 +100,18 @@ export default function ColorChanger ({selectedColor,product}) {
 
     return (
         <div>
-            <div className="fixed bottom-15 left-[50%] translate-x-[-50%] z-999">
-                <ul className="flex justify-center gap-3 rounded-full bg-gray-400 pr-4 pl-4 pt-1.5 pb-1.5">
+            <div className="fixed top-[50%] right-15 translate-y-[-50%] z-999">
+                <p className="mb-4 text-center text-lg font-semibold">외관</p>
+                <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {targetProduct.map((ele)=>(
-                        <li data-color={ele.datacolor} data-text={ele.datatext} key={ele.datacolor} onClick={handleColor} className={`w-8 h-8 bg-[${ele.realcolor}] rounded-full shadow-2xl shadow-gray-300/30 ${ele.default ? 'border-2 border-purple-300' : ""}`}></li>
+                        <li data-color={ele.datacolor} data-text={ele.datatext} key={ele.datacolor} onClick={handleColor} className={`w-8 h-8 bg-[${ele.realcolor}] rounded-full shadow-2xl shadow-gray-300/30 ${ele.default ? 'border-3 border-yellow-700' : ""}`}></li>
                     ))}
                 </ul>
+                <p className="model-descript mt-4 text-center text-sm font-semibold">
+                    {defaultsText}
+                </p>
             </div>
-            <p className="model-descript text-center text-sm fixed bottom-5.5 left-[50%] z-99 translate-x-[-50%]">
-                {defaultsText}
-            </p>
+
         </div>
     )
 }
