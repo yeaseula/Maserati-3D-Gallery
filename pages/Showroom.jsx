@@ -5,20 +5,19 @@ import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@rea
 import * as THREE from "three";
 import { SpotLight, SpotLightHelper } from 'three';
 import { TextureLoader } from "three";
-import { RGBELoader } from "three-stdlib";
 import ChangerMenu from "../components/ChangerMenu";
-import { call } from "three/tsl";
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js';
 
 const modelMap = {
     levante: {
-        modalPath: '/src/assets/glb/levante.glb',
+        modalPath: '/src/assets/glb/optimized/levante.glb',
         position: [0,-0.75,0],
         scale:[100,100,100],
         rotation:[0,(-Math.PI / 2) + 1.45, 0],
-        lightpower:20
+        lightpower:17
     },
     cielo: {
-        modalPath: '/src/assets/glb/cielo.glb',
+        modalPath: '/src/assets/glb/optimized/cielo.glb',
         position: [0,-0.75,0],
         scale:[108,108,108],
         rotation:[0,(-Math.PI / 2) + 1.45, 0],
