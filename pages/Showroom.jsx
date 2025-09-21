@@ -40,12 +40,6 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
                     color:colors,
                     metalness: 0.2,
                     roughness: 0.1,
-                    clearcoat: 1,
-                    clearcoatRoughness: 0.03,
-                    transmission: 0.2,
-                    thickness: 0.8,
-                    ior: 1.2,
-                    reflectivity: 0.8
                 });
             }
             if(meshname.includes('glass') || meshname.includes('window')){
@@ -68,12 +62,6 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
                     color:colors,
                     metalness: 0.2,
                     roughness: 0.1,
-                    clearcoat: 1,
-                    clearcoatRoughness: 0.03,
-                    transmission: 0.2,
-                    thickness: 0.8,
-                    ior: 1.2,
-                    reflectivity: 0.8
                 });
             }
             if(meshname.includes('calliper') || meshname.includes('caliper')){
