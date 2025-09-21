@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 
 export default function CalliperChanger ({selectedCalliper}) {
     const calliper = [
@@ -39,22 +40,14 @@ export default function CalliperChanger ({selectedCalliper}) {
         },
     ]
 
-    const defaultsCalliperText = 'Blue'
+    const [selected,setSelected] = useState(
+        calliper.find((cal) => cal.default)?.color || calliper[0].color
+    )
 
-    const handleCalliper = (e) => {
-        const targetCalliper = e.currentTarget.dataset.color;
-        const targetCalliperText = e.currentTarget.dataset.text;
-        selectedCalliper(targetCalliper)
-        const ul = document.querySelectorAll('.calliper-changer ul li')
-        ul.forEach((ele,idx)=>{
-            if(ele.classList.contains('border-3','border-yellow-700')) {
-                ele.classList.remove('border-3','border-yellow-700')
-            }
-        })
-        e.currentTarget.classList.add('border-3','border-yellow-700')
-
-        const calliperDescript = document.querySelector('.calliper-descript');
-        calliperDescript.textContent=targetCalliperText;
+    const handleCalliper = (color) => {
+        setSelected(color);
+        const target = calliper.find((cal)=>cal.color === color);
+        selectedCalliper(color, target.des);
     }
 
     return (
@@ -64,12 +57,12 @@ export default function CalliperChanger ({selectedCalliper}) {
                 <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {calliper.map((ele)=>(
                         <li data-color={ele.color} data-text={ele.des} key={ele.id}
-                        onClick={handleCalliper}
-                        className={`w-8 h-8 bg-[${ele.color}] rounded-full shadow-2xl shadow-gray-300/30 ${ele.default ? 'border-3 border-yellow-700' : ""}`}></li>
+                        onClick={()=> handleCalliper(ele.color)}
+                        className={`w-8 h-8 bg-[${ele.color}] rounded-full shadow-2xl shadow-gray-300/30 ${selected === ele.color ? 'border-3 border-yellow-700' : ""}`}></li>
                     ))}
                 </ul>
                 <p className="calliper-descript mt-4 text-center text-sm font-semibold">
-                    {defaultsCalliperText}
+                    {calliper.find((c) => c.color === selected)?.des}
                 </p>
             </div>
         </>
