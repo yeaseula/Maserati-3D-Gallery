@@ -1,5 +1,4 @@
-import React from "react";
-import * as THREE from "three";
+import React, { useState } from "react";
 
 export default function WindowChanger({selectedWindow}) {
     const background = [
@@ -33,23 +32,13 @@ export default function WindowChanger({selectedWindow}) {
         },
     ]
 
-    const defaultsText = '단풍으로 물든 숲 속'
+    const [windowState,setWindowState] = useState(
+        background.find(ele=>ele.default)?.src || background[0].src
+    )
 
-    const onhandleBackImg = (e) => {
-        const targetImage = e.currentTarget.dataset.target;
-        const targetText = e.currentTarget.dataset.des;
-        selectedWindow(targetImage);
-
-        const ul = document.querySelectorAll('.window-changer ul li')
-        ul.forEach((ele,idx)=>{
-            if(ele.classList.contains('border-3','border-yellow-700')) {
-                ele.classList.remove('border-3','border-yellow-700')
-            }
-        })
-        e.currentTarget.classList.add('border-3','border-yellow-700')
-
-        const windowDes = document.querySelector('.window-descript');
-        windowDes.textContent=targetText;
+    const onhandleBackImg = (src) => {
+        selectedWindow(src);
+        setWindowState(src);
     }
 
     return (
@@ -59,14 +48,14 @@ export default function WindowChanger({selectedWindow}) {
                 <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {background.map(ele=>(
                         <li data-target={ele.src} data-des={ele.des} key={ele.id}
-                        onClick={onhandleBackImg}
-                        className={`w-8 h-8 rounded-full overflow-hidden shadow-2xl shadow-gray-300/30 ${ele.default ? 'border-3 border-yellow-700' : ""} `}>
+                        onClick={()=>onhandleBackImg(ele.src)}
+                        className={`w-8 h-8 rounded-full overflow-hidden shadow-2xl shadow-gray-300/30 ${windowState == ele.src ? 'border-3 border-yellow-700' : ""} `}>
                             <img src={ele.src} alt="" className="w-full h-full object-cover" />
                         </li>
                     ))}
                 </ul>
                 <p className="window-descript mt-4 text-center text-sm font-semibold">
-                    {defaultsText}
+                    {windowState.find(ele=>ele.src == windowState)?.des}
                 </p>
             </div>
         </>
