@@ -1,74 +1,64 @@
 import React, { useEffect, useState } from "react";
+import ChangerMenu from "./ChangerMenu";
 
 export default function ColorChanger ({selectedColor,product}) {
     const ColorChart = {
         levante: [
             {
-                datacolor:'#DDDDDD',
-                datatext:'Bianco',
-                realcolor:'#DDDDDD',
+                state:'#DDDDDD',
+                des:'Bianco',
                 default:true
             },
             {
-                datacolor:'#898384',
-                datatext:'Grigio',
-                realcolor:'#898384',
+                state:'#898384',
+                des:'Grigio',
                 default:false
             },
             {
-                datacolor:'#010102',
-                datatext:'Nero',
-                realcolor:'#010102',
+                state:'#010102',
+                des:'Nero',
                 default:false
             },
             {
-                datacolor:'#433837',
-                datatext:'Rame',
-                realcolor:'#433837',
+                state:'#433837',
+                des:'Rame',
                 default:false
             },
             {
-                datacolor:'#021850',
-                datatext:'Blu Nobile',
-                realcolor:'#021850',
+                state:'#021850',
+                des:'Blu Nobile',
                 default:false
             },
             {
-                datacolor:'#a81710',
-                datatext:'ROSSO Potente',
-                realcolor:'#a81710',
+                state:'#a81710',
+                des:'ROSSO Potente',
                 default:false
             },
         ],
         cielo: [
             {
-                datacolor:'#a1a8af',
-                datatext:'Grigio lncognito',
-                realcolor:'#a1a8af',
+                state:'#a1a8af',
+                des:'Grigio lncognito',
                 default:true
             },
             {
-                datacolor:'#4e5359',
-                datatext:'Grigio Mistero',
-                realcolor:'#4e5359',
+                state:'#4e5359',
+                des:'Grigio Mistero',
                 default:false
             },
             {
-                datacolor:'#94020f',
-                datatext:'Rosso Vincente',
-                realcolor:'#94020f',
+                state:'#94020f',
+                des:'Rosso Vincente',
                 default:false
             },
             {
-                datacolor:'#00049b',
-                datatext:'Blu Infinito',
-                realcolor:'#00049b',
+                state:'#00049b',
+                des:'Blu Infinito',
                 default:false
             },
             {
-                datacolor:'#d0a733',
-                datatext:'Giallo Genio',
-                realcolor:'#d0a733',
+                state:'#d0a733',
+                des:'Giallo Genio',
                 default:false
             },
         ]
@@ -77,32 +67,28 @@ export default function ColorChanger ({selectedColor,product}) {
     const targetProduct = ColorChart[product]
 
     const [colorState,setColorState] = useState(
-        targetProduct.find((ele)=>ele.default)?.realcolor || targetProduct[0].realcolor
+        targetProduct.find((ele)=>ele.default)?.state || targetProduct[0].state
     )
     useEffect(()=>{
-        setColorState(targetProduct.find((ele)=>ele.default)?.realcolor)
+        setColorState(targetProduct.find((ele)=>ele.default)?.state)
     },[product])
 
-    const handleColor = (realcolor) => {
-        selectedColor(realcolor)
-        setColorState(realcolor)
+    const handleColor = (color) => {
+        selectedColor(color)
+        setColorState(color)
     }
 
     return (
         <>
-            <div className="color-changer">
-                <p className="mb-4 text-center text-lg font-semibold">외관</p>
-                <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
-                    {targetProduct.map((ele)=>(
-                        <li data-color={ele.datacolor} data-text={ele.datatext} key={ele.datacolor}
-                        onClick={()=>{handleColor(ele.realcolor)}}
-                        className={`w-8 h-8 bg-[${ele.realcolor}] rounded-full shadow-2xl shadow-gray-300/30 ${colorState == ele.realcolor ? 'border-3 border-yellow-700' : ""}`}></li>
-                    ))}
-                </ul>
-                <p className="model-descript mt-4 text-center text-sm font-semibold">
-                    {targetProduct.find((ele)=>ele.realcolor === colorState)?.datatext}
-                </p>
-            </div>
+            <ChangerMenu
+                classTitle={"color-changer"}
+                menuTitle={"외관"}
+                dataTarget={targetProduct}
+                componentState={colorState}
+                handlerFunc={handleColor}
+                contentsRender={(ele)=>(<span aria-label={`자동차 외관 ${ele.des} 색상`}></span>)}
+                style={false}
+            />
         </>
     )
 }

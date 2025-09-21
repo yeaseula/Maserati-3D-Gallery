@@ -1,47 +1,48 @@
 import React from "react";
 import { useState } from "react";
+import ChangerMenu from "./ChangerMenu";
 
 export default function CalliperChanger ({selectedCalliper}) {
     const calliper = [
         {
             id:1,
             title: '캘리퍼블루',
-            color: '#314aad',
+            state: '#314aad',
             des: 'Blue',
             default: true
         },
         {
             id:2,
             title: '캘리퍼그레이',
-            color: '#888d93',
+            state: '#888d93',
             des: 'Gray',
             default: false
         },
         {
             id:3,
             title: '캘리퍼네로',
-            color: '#13161b',
+            state: '#13161b',
             des: 'Nero',
             default: false
         },
         {
             id:4,
             title: '캘리퍼로소',
-            color: '#e90708',
+            state: '#e90708',
             des: 'Rosso',
             default: false
         },
         {
             id:5,
             title: '캘리퍼라임',
-            color: '#d4fb15',
+            state: '#d4fb15',
             des: 'Lime',
             default: false
         },
     ]
 
     const [selected,setSelected] = useState(
-        calliper.find((cal) => cal.default)?.color || calliper[0].color
+        calliper.find((cal) => cal.default)?.state || calliper[0].state
     )
 
     const handleCalliper = (color) => {
@@ -51,19 +52,15 @@ export default function CalliperChanger ({selectedCalliper}) {
 
     return (
         <>
-            <div className="mt-6 pt-6 border-t-1 border-gray-300 calliper-changer">
-                <p className="mb-4 text-center text-lg font-semibold">브레이크 캘리퍼</p>
-                <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
-                    {calliper.map((ele)=>(
-                        <li data-color={ele.color} data-text={ele.des} key={ele.id}
-                        onClick={()=> handleCalliper(ele.color)}
-                        className={`w-8 h-8 bg-[${ele.color}] rounded-full shadow-2xl shadow-gray-300/30 ${selected === ele.color ? 'border-3 border-yellow-700' : ""}`}></li>
-                    ))}
-                </ul>
-                <p className="calliper-descript mt-4 text-center text-sm font-semibold">
-                    {calliper.find((c) => c.color === selected)?.des}
-                </p>
-            </div>
+            <ChangerMenu
+                classTitle={"calliper-changer"}
+                menuTitle={"브레이크 캘리퍼"}
+                dataTarget={calliper}
+                componentState={selected}
+                handlerFunc={handleCalliper}
+                contentsRender={(ele)=>(<span aria-label={`브레이크 캘리퍼 ${ele.des} 색상`}></span>)}
+                style={true}
+            />
         </>
     )
 }
