@@ -12,7 +12,7 @@ const modelMap = {
         position: [0,-0.75,0],
         scale: [100,100,100],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 17,
+        lightpower: 10,
         defaultColor: '#DDDDDD'
     },
     cielo: {
@@ -20,7 +20,7 @@ const modelMap = {
         position: [0,-0.75,0],
         scale: [108,108,108],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 20,
+        lightpower: 10,
         defaultColor: '#a1a8af'
     }
 }
@@ -93,7 +93,7 @@ function MyScene({...props}) {
             ref={spotLightRef}
             angle={0.23}
             penumbra={0.8}
-            distance={30}
+            distance={8}
             anglePower={4}
             attenuation={5}
             castShadow
@@ -109,7 +109,7 @@ function MyScene2({...props}) {
             ref={spotLightRef}
             angle={0.23}
             penumbra={0.8}
-            distance={30}
+            distance={8}
             anglePower={10}
             attenuation={5}
 
@@ -165,9 +165,9 @@ export default function Showroom({product,setCurrentLocation}) {
             >
                 <color attach="background" args={['#fafafa']} />
                 <ambientLight intensity={2} color={'white'}></ambientLight>
-                <MyScene2 color="#FFDDA0" position={[-5,5,-5]} intensity={50}></MyScene2>
+                <MyScene2 color="#FFDDA0" position={[-5,5,-5]} intensity={8}></MyScene2>
                 <MyScene color="#FFDDA0" position={[4, 4, 4]} intensity={LightPower}></MyScene>
-                <directionalLight color="#ffffff" intensity={1} position={[5,10,3]} castShadow />
+                <directionalLight color="#ffffff" intensity={3} position={[5,10,3]} castShadow />
                 <Suspense fallback={null}>
                     <ProductCall
                     modalPath={modalPath.modalPath}

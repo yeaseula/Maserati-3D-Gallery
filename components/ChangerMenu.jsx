@@ -13,7 +13,7 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
                 </li>
             ))}
         </ul>
-        <p className="model-descript mt-4 text-center text-sm font-semibold">
+        <p className="model-descript mt-4 h-5 text-center text-sm font-semibold">
             {dataTarget.find((ele)=>ele.state === componentState)?.des}
         </p>
     </aside>
