@@ -33,7 +33,7 @@ export default function WindowChanger({selectedWindow}) {
     ]
 
     const [windowState,setWindowState] = useState(
-        background.find(ele=>ele.default)?.src || background[0].src
+        background.find((ele)=>ele.default)?.src || background[0].src
     )
 
     const onhandleBackImg = (src) => {
@@ -55,7 +55,7 @@ export default function WindowChanger({selectedWindow}) {
                     ))}
                 </ul>
                 <p className="window-descript mt-4 text-center text-sm font-semibold">
-                    {windowState.find(ele=>ele.src == windowState)?.des}
+                    {background.find(ele=>ele.src == windowState)?.des}
                 </p>
             </div>
         </>
