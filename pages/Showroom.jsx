@@ -32,7 +32,7 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
     useMemo(() => {
         gltf.scene.traverse((child) => {
             if (!child.isMesh) return;
-            // console.log(child.name)
+            //console.log(child.name)
             const meshname = child.name.toLowerCase();
             if(meshname.includes('hood') || (meshname.includes('door') && meshname.includes('levante')) ||
             (meshname.includes('rear') && meshname.includes('004')) || (meshname.includes('frontkit') && meshname.includes('gts_001'))){
@@ -49,11 +49,11 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
                     clearcoat:1,
                     clearcoatRoughness:0.2,
                     transmission:1,
-                    reflectivity:0.5,
-                    opacity:0.3,
+                    reflectivity:1,
+                    opacity:0.25,
                     transparent:0,
-                    thickness:0.3,
-                    ior:1.2,
+                    thickness:0.2,
+                    ior:1.1,
                 })
             }
             //cielo 모델 추후 분리
