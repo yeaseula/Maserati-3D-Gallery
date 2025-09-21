@@ -1,5 +1,4 @@
-import React from "react";
-import { div } from "three/tsl";
+import React, { useEffect, useState } from "react";
 
 export default function ColorChanger ({selectedColor,product}) {
     const ColorChart = {
@@ -74,28 +73,19 @@ export default function ColorChanger ({selectedColor,product}) {
             },
         ]
     }
-    const defaultText = {
-        levante : 'Bianco',
-        cielo : 'Grigio lncognito'
-    }
 
     const targetProduct = ColorChart[product]
-    const defaultsText = defaultText[product]
 
-    const handleColor = (e) => {
-        const targetColor = e.currentTarget.dataset.color;
-        const targetText = e.currentTarget.dataset.text;
-        selectedColor(targetColor)
-        const ul = document.querySelectorAll('.color-changer ul li')
-        ul.forEach((ele,idx)=>{
-            if(ele.classList.contains('border-3','border-yellow-700')) {
-                ele.classList.remove('border-3','border-yellow-700')
-            }
-        })
-        e.currentTarget.classList.add('border-3','border-yellow-700')
+    const [colorState,setColorState] = useState(
+        targetProduct.find((ele)=>ele.default)?.realcolor || targetProduct[0].realcolor
+    )
+    useEffect(()=>{
+        setColorState(targetProduct.find((ele)=>ele.default)?.realcolor)
+    },[product])
 
-        const modelDescript = document.querySelector('.model-descript');
-        modelDescript.textContent=targetText
+    const handleColor = (realcolor) => {
+        selectedColor(realcolor)
+        setColorState(realcolor)
     }
 
     return (
@@ -105,12 +95,12 @@ export default function ColorChanger ({selectedColor,product}) {
                 <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {targetProduct.map((ele)=>(
                         <li data-color={ele.datacolor} data-text={ele.datatext} key={ele.datacolor}
-                        onClick={handleColor}
-                        className={`w-8 h-8 bg-[${ele.realcolor}] rounded-full shadow-2xl shadow-gray-300/30 ${ele.default ? 'border-3 border-yellow-700' : ""}`}></li>
+                        onClick={()=>{handleColor(ele.realcolor)}}
+                        className={`w-8 h-8 bg-[${ele.realcolor}] rounded-full shadow-2xl shadow-gray-300/30 ${colorState == ele.realcolor ? 'border-3 border-yellow-700' : ""}`}></li>
                     ))}
                 </ul>
                 <p className="model-descript mt-4 text-center text-sm font-semibold">
-                    {defaultsText}
+                    {targetProduct.find((ele)=>ele.realcolor === colorState)?.datatext}
                 </p>
             </div>
         </>

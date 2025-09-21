@@ -46,8 +46,7 @@ export default function CalliperChanger ({selectedCalliper}) {
 
     const handleCalliper = (color) => {
         setSelected(color);
-        const target = calliper.find((cal)=>cal.color === color);
-        selectedCalliper(color, target.des);
+        selectedCalliper(color);
     }
 
     return (
