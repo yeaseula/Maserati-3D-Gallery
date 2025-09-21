@@ -14,11 +14,11 @@ function App() {
 
 function AppInner() {
   const location = useLocation();
-  const [currentlocation,setCurrentLocation] = useState('levante');
+  const [currentlocation,setCurrentLocation] = useState('cielo');
 
   useEffect(()=>{
-    if (location.pathname === '/cielo') setCurrentLocation('cielo');
-    else setCurrentLocation('levante');
+    if (location.pathname === '/levante') setCurrentLocation('levante');
+    else setCurrentLocation('cielo');
   },[location.pathname])
 
   return (

@@ -10,16 +10,18 @@ const modelMap = {
     levante: {
         modalPath: '/src/assets/glb/optimized/levante.glb',
         position: [0,-0.75,0],
-        scale:[100,100,100],
-        rotation:[0,(-Math.PI / 2) + 1.45, 0],
-        lightpower:17
+        scale: [100,100,100],
+        rotation: [0,(-Math.PI / 2) + 1.45, 0],
+        lightpower: 17,
+        defaultColor: '#DDDDDD'
     },
     cielo: {
         modalPath: '/src/assets/glb/optimized/cielo.glb',
         position: [0,-0.75,0],
-        scale:[108,108,108],
-        rotation:[0,(-Math.PI / 2) + 1.45, 0],
-        lightpower:20
+        scale: [108,108,108],
+        rotation: [0,(-Math.PI / 2) + 1.45, 0],
+        lightpower: 20,
+        defaultColor: '#a1a8af'
     }
 }
 useGLTF.preload('/src/assets/glb/optimized/levante.glb');
@@ -157,12 +159,13 @@ function LogoWall() {
 export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
-    const [colors,setColors] = useState('#898384')
+    const [colors,setColors] = useState('#DDDDDD')
     const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
     const [calliper,setCalliper] = useState('#314aad')
 
     useEffect(()=>{
-        setCurrentLocation(product)
+        setColors(modalPath.defaultColor);
+        setCurrentLocation(product);
     },[product])
 
     return (

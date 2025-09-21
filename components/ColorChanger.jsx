@@ -5,16 +5,16 @@ export default function ColorChanger ({selectedColor,product}) {
     const ColorChart = {
         levante: [
             {
+                datacolor:'#DDDDDD',
+                datatext:'Bianco',
+                realcolor:'#DDDDDD',
+                default:true
+            },
+            {
                 datacolor:'#898384',
                 datatext:'Grigio',
                 realcolor:'#898384',
                 default:true
-            },
-            {
-                datacolor:'#DDDDDD',
-                datatext:'Bianco',
-                realcolor:'#DDDDDD',
-                default:false
             },
             {
                 datacolor:'#010102',
@@ -75,7 +75,7 @@ export default function ColorChanger ({selectedColor,product}) {
         ]
     }
     const defaultText = {
-        levante : 'Grigio',
+        levante : 'Bianco',
         cielo : 'Grigio lncognito'
     }
 
