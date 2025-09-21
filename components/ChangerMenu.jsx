@@ -2,7 +2,7 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
 
     return (
     <>
-    <div className={`${classTitle} ${style? 'mt-6 pt-6 border-t-1 border-gray-300': ''}`}>
+    <aside className={`${classTitle} ${style? 'mt-6 pt-6 border-t-1 border-gray-300': ''}`}>
         <p className="mb-4 text-center text-lg font-semibold">{menuTitle}</p>
         <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
             {dataTarget.map((ele)=>(
@@ -16,7 +16,7 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
         <p className="model-descript mt-4 text-center text-sm font-semibold">
             {dataTarget.find((ele)=>ele.state === componentState)?.des}
         </p>
-    </div>
+    </aside>
     </>
  )
 }
