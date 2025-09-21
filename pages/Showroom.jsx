@@ -4,7 +4,7 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@react-three/drei";
 import * as THREE from "three";
 import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
-import ChangerMenu from "../components/ChangerMenu";
+import SideMenu from "../components/SideMenu";
 
 const modelMap = {
     levante: {
@@ -133,7 +133,7 @@ function MyScene2({...props}) {
 useTexture.preload('/src/assets/images/tree-background.jpg');
 useTexture.preload('/src/assets/images/tree-background2.jpg');
 useTexture.preload('/src/assets/images/city.jpg');
-useTexture.preload('/src/assets/images/city2ㅐ.jpg');
+useTexture.preload('/src/assets/images/city2.jpg');
 
 function Window({window}){
     const treeTexture = useTexture(window)
@@ -270,7 +270,7 @@ export default function Showroom({product,setCurrentLocation}) {
                 </mesh>
                 <OrbitControls></OrbitControls>
             </Canvas>
-            <ChangerMenu
+            <SideMenu
             selectedColor={setColors}
             product={product}
             selectedWindow={setWindow}

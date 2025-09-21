@@ -14,7 +14,7 @@ export default function ColorChanger ({selectedColor,product}) {
                 datacolor:'#898384',
                 datatext:'Grigio',
                 realcolor:'#898384',
-                default:true
+                default:false
             },
             {
                 datacolor:'#010102',

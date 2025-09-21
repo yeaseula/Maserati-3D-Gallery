@@ -7,7 +7,7 @@ export default function WindowChanger({selectedWindow}) {
             id:1,
             title: '배경1',
             src: '/src/assets/images/tree-background.jpg',
-            des: '단풍잎으로 물든 숲 속',
+            des: '단풍으로 물든 숲 속',
             default: true
         },
         {
@@ -21,19 +21,19 @@ export default function WindowChanger({selectedWindow}) {
             id:3,
             title: '배경3',
             src: '/src/assets/images/city.jpg',
-            des: '반짝이는 야경',
+            des: '야경 속 강변 드라이브',
             default: false
         },
         {
             id:4,
             title: '배경4',
             src: '/src/assets/images/city2.jpg',
-            des: '유럽 도시',
+            des: '도시의 불빛',
             default: false
         },
     ]
 
-    const defaultsText = '단풍잎'
+    const defaultsText = '단풍으로 물든 숲 속'
 
     const onhandleBackImg = (e) => {
         const targetImage = e.currentTarget.dataset.target;
@@ -50,13 +50,11 @@ export default function WindowChanger({selectedWindow}) {
 
         const windowDes = document.querySelector('.window-descript');
         windowDes.textContent=targetText;
-
-
     }
 
     return (
         <>
-            <div className="mt-6 window-changer">
+            <div className="mt-6 pt-6 border-t-1 border-gray-300 window-changer">
                 <p className="mb-4 text-center text-lg font-semibold">배경</p>
                 <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {background.map(ele=>(

@@ -59,7 +59,7 @@ export default function CalliperChanger ({selectedCalliper}) {
 
     return (
         <>
-            <div className="mt-6 calliper-changer">
+            <div className="mt-6 pt-6 border-t-1 border-gray-300 calliper-changer">
                 <p className="mb-4 text-center text-lg font-semibold">브레이크 캘리퍼</p>
                 <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                     {calliper.map((ele)=>(
