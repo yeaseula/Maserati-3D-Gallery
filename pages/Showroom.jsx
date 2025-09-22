@@ -6,6 +6,7 @@ import * as THREE from "three";
 import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 import SideMenu from "../components/SideMenu";
 import ChangerButton from "../components/ChangerButton";
+import Light from "../components/canvas/Light";
 import Wall from "../components/canvas/Wall";
 
 const modelMap = {
@@ -88,38 +89,6 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
     )
 }
 
-function MyScene({...props}) {
-    const spotLightRef = useRef();
-    //useHelper(spotLightRef, SpotLightHelper, 'cyan'); // The third argument is the helper's color
-    return (
-        <spotLight
-            ref={spotLightRef}
-            angle={0.23}
-            penumbra={0.8}
-            distance={8}
-            anglePower={4}
-            attenuation={5}
-            castShadow
-            {...props}
-        />
-    );
-}
-function MyScene2({...props}) {
-    const spotLightRef = useRef();
-    //useHelper(spotLightRef, SpotLightHelper, 'red'); // The third argument is the helper's color
-    return (
-        <spotLight
-            ref={spotLightRef}
-            angle={0.23}
-            penumbra={0.8}
-            distance={8}
-            anglePower={10}
-            attenuation={5}
-            {...props}
-        />
-    );
-}
-
 
 export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
@@ -142,10 +111,7 @@ export default function Showroom({product,setCurrentLocation}) {
             className="w-[100vw] h-[100vh]"
             >
                 <color attach="background" args={['#fafafa']} />
-                <ambientLight intensity={2} color={'white'}></ambientLight>
-                <MyScene2 color="#FFDDA0" position={[-5,5,-5]} intensity={8}></MyScene2>
-                <MyScene color="#FFDDA0" position={[4, 4, 4]} intensity={LightPower}></MyScene>
-                <directionalLight color="#ffffff" intensity={3} position={[5,10,3]} castShadow />
+                <Light LightPower={LightPower}/>
                 <Suspense fallback={null}>
                     <ProductCall
                     modalPath={modalPath.modalPath}
