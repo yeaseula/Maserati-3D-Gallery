@@ -26,27 +26,9 @@ h1 {
   line-height: 1.1;
 }
 
-button {
-  cursor: pointer;
-}
-
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-}
-
-.side-menu {
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-}
-/* 크롬, 사파리 */
-.side-menu::-webkit-scrollbar {
-  display: none;
-}
-
-/* 파이어폭스 */
-.side-menu {
-  scrollbar-width: none;
 }

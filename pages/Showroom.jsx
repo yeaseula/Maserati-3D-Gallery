@@ -1,9 +1,8 @@
 import React from "react";
-import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
-import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@react-three/drei";
+import { useState, useEffect } from 'react';
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
-import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 import SideMenu from "../components/SideMenu";
 import ChangerButton from "../components/ChangerButton";
 
@@ -29,8 +28,6 @@ const modelMap = {
         defaultColor: '#a1a8af'
     }
 }
-
-
 
 export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];

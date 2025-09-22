@@ -8,7 +8,8 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
             {dataTarget.map((ele)=>(
                 <li data-color={ele.state} data-text={ele.des} key={ele.des}
                 onClick={()=>{handlerFunc(ele.state)}}
-                className={`w-8 h-8 bg-[${ele.state}] rounded-full shadow-2xl overflow-hidden shadow-gray-300/30 ${componentState == ele.state? 'border-3 border-yellow-700' : ""}`}>
+                style={{ backgroundColor: ele.state }}
+                className={`w-8 h-8 rounded-full shadow-2xl overflow-hidden shadow-gray-300/30 ${componentState == ele.state? 'border-3 border-yellow-700' : ""}`}>
                     {contentsRender(ele)}
                 </li>
             ))}

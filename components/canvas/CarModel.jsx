@@ -74,11 +74,9 @@ export default function CarModel({modalPath,colors,calliper}) {
             <Suspense fallback={
                 <Html className="flex items-center justify-center flex-col h-full">
                     <div className="flex space-x-2">
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full animate-bounce"></div>
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
-                        <div className="w-3 h-3 bg-yellow-500 rounded-full animate-bounce [animation-delay:-0.6s]"></div>
+                        <div className="w-6 h-6 border-4 border-yellow-500 border-t-transparent rounded-full animate-spin"></div>
                     </div>
-                    <p className="text-white text-2xl mt-4 font-medium">Loading..</p>
+                    <p className="text-white text-2xl mt-4 font-semibold text-shadow-yellow-800">Loading..</p>
                 </Html>
             }>
                 <ProductCall
