@@ -5,6 +5,7 @@ import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@rea
 import * as THREE from "three";
 import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 import SideMenu from "../components/SideMenu";
+import ChangerButton from "../components/ChangerButton";
 
 const modelMap = {
     levante: {
@@ -46,14 +47,15 @@ function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
                 child.material = new THREE.MeshPhysicalMaterial({
                     color:'white',
                     metalness:0,
+                    roughness:0,
                     clearcoat:1,
                     clearcoatRoughness:0.2,
                     transmission:1,
                     reflectivity:1,
                     opacity:0.25,
                     transparent:0,
-                    thickness:0.2,
-                    ior:1.1,
+                    thickness:0.3,
+                    ior:1.15,
                 })
             }
             //cielo 모델 추후 분리
@@ -150,6 +152,7 @@ export default function Showroom({product,setCurrentLocation}) {
     const [colors,setColors] = useState('#DDDDDD')
     const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
     const [calliper,setCalliper] = useState('#314aad')
+    const [sideState,setSideState] = useState(true)
 
     useEffect(()=>{
         setColors(modalPath.defaultColor);
@@ -158,9 +161,9 @@ export default function Showroom({product,setCurrentLocation}) {
 
     return (
         <div className="w-[100vw] h-[100vh]">
+            <ChangerButton sideState={sideState} setSideState={setSideState}/>
             <Canvas shadows
             camera={{ position:[5,1,5], fov:50 }}
-
             className="w-[100vw] h-[100vh]"
             >
                 <color attach="background" args={['#fafafa']} />
@@ -252,17 +255,19 @@ export default function Showroom({product,setCurrentLocation}) {
                 </mesh>
                 <mesh rotation-x={-Math.PI / 2} position={[0,-0.8,0]} receiveShadow>
                     <planeGeometry args={[4, 6]} />
-                    /* 하나의 메쉬에 하나의 머터리얼만 가능 */
+                    {/* 하나의 메쉬에 하나의 머터리얼만 가능 */}
                     <meshStandardMaterial color="#E6D8AD" roughness={0.01} metalness={0.3} />
 
                 </mesh>
                 <OrbitControls></OrbitControls>
             </Canvas>
+            {sideState ? (
             <SideMenu
             selectedColor={setColors}
             product={product}
             selectedWindow={setWindow}
             selectedCalliper={setCalliper}/>
+            ):('')}
         </div>
     )
 }
