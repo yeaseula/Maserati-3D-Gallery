@@ -33,7 +33,7 @@ export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#DDDDDD')
-    const [window,setWindow] = useState('/src/assets/images/tree-background.jpg')
+    const [window,setWindow] = useState('/image/tree-background.jpg')
     const [calliper,setCalliper] = useState('#314aad')
     const [sideState,setSideState] = useState(true)
 
