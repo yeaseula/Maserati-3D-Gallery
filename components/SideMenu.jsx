@@ -5,7 +5,7 @@ import ModelDescript from "./ModelDescript";
 
 export default function SideMenu({selectedColor, product, selectedWindow, selectedCalliper}) {
     return (
-        <aside className="side-menu fixed top-[50%] right-10 translate-y-[-50%] z-999 bg-white p-5 rounded-lg shadow">
+        <aside className="side-menu fixed bottom-0 md:bottom-[unset] md:top-[50%] md:right-10 md:translate-y-[-50%] z-999 bg-white p-5 rounded-lg shadow">
             <ColorChanger selectedColor={selectedColor} product={product}/>
             <WindowChanger selectedWindow={selectedWindow}/>
             <CalliperChanger selectedCalliper={selectedCalliper}/>

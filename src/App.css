@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
+.transition-2 {
+  transition: all 0.2s;
+}
+
 .side-menu {
+  width: 335px;
   max-height: calc(100vh - 120px);
   overflow-y: auto;
+}
+
+@media(max-width:767px) {
+  .side-menu {
+    width: 100vw;
+    max-height: 33vh;
+  }
 }
 /* 크롬, 사파리 */
 .side-menu::-webkit-scrollbar {
