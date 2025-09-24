@@ -3,13 +3,13 @@ import { useTexture } from "@react-three/drei";
 
 export default function Wall({window}) {
 
-    useTexture.preload('/src/assets/images/tree-background.jpg');
-    useTexture.preload('/src/assets/images/tree-background2.jpg');
-    useTexture.preload('/src/assets/images/city.jpg');
-    useTexture.preload('/src/assets/images/city2.jpg');
+    useTexture.preload('/image/tree-background.jpg');
+    useTexture.preload('/image/tree-background2.jpg');
+    useTexture.preload('/image/city.jpg');
+    useTexture.preload('/image/city2.jpg');
 
     function LogoWall() {
-        const logoImage = useTexture('/src/assets/images/maserati-logo.png')
+        const logoImage = useTexture('/image/maserati-logo.png')
         const aspect = logoImage.image.width / logoImage.image.height;
         return (
             <mesh position={[0,1,-2.8]}>

@@ -6,28 +6,28 @@ export default function WindowChanger({selectedWindow}) {
         {
             id:1,
             title: '배경1',
-            state: '/src/assets/images/tree-background.jpg',
+            state: '/image/tree-background.jpg',
             des: '단풍으로 물든 숲 속',
             default: true
         },
         {
             id:2,
             title: '배경2',
-            state: '/src/assets/images/tree-background2.jpg',
+            state: '/image/tree-background2.jpg',
             des: '푸른 녹음이 가득한 여름날',
             default: false
         },
         {
             id:3,
             title: '배경3',
-            state: '/src/assets/images/city.jpg',
+            state: '/image/city.jpg',
             des: '야경 속 강변 드라이브',
             default: false
         },
         {
             id:4,
             title: '배경4',
-            state: '/src/assets/images/city2.jpg',
+            state: '/image/city2.jpg',
             des: '도시의 불빛',
             default: false
         },
