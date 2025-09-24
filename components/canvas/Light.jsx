@@ -1,6 +1,4 @@
-import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
-import * as THREE from "three";
-import { SpotLight, SpotLightHelper } from 'three';
+import { useRef } from 'react';
 
 export default function Light({LightPower}){
 

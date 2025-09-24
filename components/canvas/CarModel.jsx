@@ -1,9 +1,7 @@
 import React from "react";
-import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
-import { Canvas, useLoader } from "@react-three/fiber";
+import { Suspense, useMemo} from 'react';
 import { Environment, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
-import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
 
 export default function CarModel({modalPath,colors,calliper}) {
     useGLTF.preload('/src/assets/glb/optimized/levante.glb');

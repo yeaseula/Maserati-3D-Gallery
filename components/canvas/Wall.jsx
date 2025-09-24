@@ -1,9 +1,5 @@
 import React from "react";
-import { Suspense, useMemo, useRef, useState, useEffect } from 'react';
-import { Canvas, useLoader } from "@react-three/fiber";
-import { OrbitControls, Environment, useGLTF, useHelper, useTexture } from "@react-three/drei";
-import * as THREE from "three";
-import { SpotLight, SpotLightHelper, TextureLoader } from 'three';
+import { useTexture } from "@react-three/drei";
 
 export default function Wall({window}) {
 
