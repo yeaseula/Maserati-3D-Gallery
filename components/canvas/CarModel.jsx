@@ -38,7 +38,7 @@ export default function CarModel({modalPath,colors,calliper}) {
                         ior:1.15,
                     })
                 }
-                //cielo 모델 추후 분리
+                //cielo 모델
                 if(meshname.includes('lodabody')){
                     child.material = new THREE.MeshStandardMaterial({
                         color:colors,

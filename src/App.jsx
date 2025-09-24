@@ -23,8 +23,8 @@ function AppInner() {
 
   return (
         <>
-            <NavBar currentlocation={currentlocation}/>
-            <Showroom product={currentlocation} setCurrentLocation={setCurrentLocation}/>
+          <NavBar currentlocation={currentlocation}/>
+          <Showroom product={currentlocation} setCurrentLocation={setCurrentLocation}/>
         </>
   )
 }
