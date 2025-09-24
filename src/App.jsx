@@ -24,6 +24,7 @@ function AppInner() {
   return (
         <>
           <NavBar currentlocation={currentlocation}/>
+          <h2 className="sr-only">마세라티 3D 전시장 - {currentlocation} 모델</h2>
           <Showroom product={currentlocation} setCurrentLocation={setCurrentLocation}/>
         </>
   )

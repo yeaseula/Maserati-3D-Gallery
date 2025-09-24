@@ -43,7 +43,7 @@ export default function Showroom({product,setCurrentLocation}) {
     },[product])
 
     return (
-        <div className="w-[100vw] h-[100vh]">
+        <section className="w-[100vw] h-[100vh]">
             <ChangerButton sideState={sideState} setSideState={setSideState}/>
             <Canvas shadows
             camera={{ position:[5,1,5], fov:50 }}
@@ -66,6 +66,6 @@ export default function Showroom({product,setCurrentLocation}) {
             selectedWindow={setWindow}
             selectedCalliper={setCalliper}/>
             ):('')}
-        </div>
+        </section>
     )
 }
