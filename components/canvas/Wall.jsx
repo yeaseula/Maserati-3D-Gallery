@@ -41,6 +41,7 @@ export default function Wall({window}) {
                 />
             </mesh>
             <Window window={window}/>
+            {/* 유리창 */}
             <mesh rotation-y={(Math.PI / 2)} position={[-1.87,0.7,0]}>
                 <boxGeometry args={[5.6,2.6,0]} />
                 <meshPhysicalMaterial
@@ -98,6 +99,7 @@ export default function Wall({window}) {
                     metalness={0}
                 />
             </mesh>
+            {/* 바닥 */}
             <mesh rotation-x={-Math.PI / 2} position={[0,-0.8,0]} receiveShadow>
                 <planeGeometry args={[4, 6]} />
                 {/* 하나의 메쉬에 하나의 머터리얼만 가능 */}

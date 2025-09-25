@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from 'react';
-import { Canvas } from "@react-three/fiber";
+import { Canvas,useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import SideMenu from "../components/SideMenu";
@@ -29,14 +29,27 @@ const modelMap = {
     }
 }
 
+function ResponsiveCamera() {
+    const { camera } = useThree()
+
+    useEffect(()=>{
+        function cameraSetting() {
+            camera.fov = window.innerWidth < 768 ? 92 : 50
+            camera.updateProjectionMatrix()
+        }
+        cameraSetting();
+    },[camera])
+
+    return null
+}
+
 export default function Showroom({product,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#DDDDDD')
-    const [window,setWindow] = useState('/image/tree-background.jpg')
+    const [windowState,setWindowState] = useState('/image/tree-background.jpg')
     const [calliper,setCalliper] = useState('#314aad')
     const [sideState,setSideState] = useState(true)
-
     useEffect(()=>{
         setColors(modalPath.defaultColor);
         setCurrentLocation(product);
@@ -46,9 +59,10 @@ export default function Showroom({product,setCurrentLocation}) {
         <section className="w-[100vw] h-[100vh]">
             <ChangerButton sideState={sideState} setSideState={setSideState}/>
             <Canvas shadows
-            camera={{ position:[5,1,5], fov:50 }}
+            camera={{ position:[5,1,5], fov: 50 }}
             className="w-[100vw] h-[100vh]"
             >
+                <ResponsiveCamera/>
                 <color attach="background" args={['#fafafa']} />
                 <Light LightPower={LightPower}/>
                 <CarModel
@@ -56,13 +70,13 @@ export default function Showroom({product,setCurrentLocation}) {
                     colors={colors}
                     calliper={calliper}
                 />
-                <Wall window={window} />
+                <Wall window={windowState} />
                 <OrbitControls></OrbitControls>
             </Canvas>
             <SideMenu
             selectedColor={setColors}
             product={product}
-            selectedWindow={setWindow}
+            selectedWindow={setWindowState}
             selectedCalliper={setCalliper}
             sideState={sideState}
             />
