@@ -59,13 +59,14 @@ export default function Showroom({product,setCurrentLocation}) {
                 <Wall window={window} />
                 <OrbitControls></OrbitControls>
             </Canvas>
-            {sideState ? (
             <SideMenu
             selectedColor={setColors}
             product={product}
             selectedWindow={setWindow}
-            selectedCalliper={setCalliper}/>
-            ):('')}
+            selectedCalliper={setCalliper}
+            sideState={sideState}
+            />
+
         </section>
     )
 }
