@@ -21,11 +21,26 @@
 그냥 입체적인 자동차 모델을 보는 게 아니라, 자동차와 환경을 함께 “체험”하는 재미를 주는 프로젝트입니다.<br />
 
 ## 2. 시연
-![시연 GIF](./assets/demo.gif)  
+<br />
+
 - 3D 모델 회전 및 확대/축소
-- 카메라 시점 이동
-- 조명/환경 변경
-- UI 인터랙션
+<br />
+
+![시연 GIF](/public/gif/maserati2.gif)  
+![시연 GIF](/public/gif/maserati1.gif)
+
+<br />
+
+- 차량 커스텀<br />
+
+![시연 GIF](/public/gif/maserati3.gif)
+
+<br />
+
+- 배경 커스텀<br />
+
+![시연 GIF](/public/gif/maserati4.gif)  
+
 
 ## 3. 기술 스택
 - **React:** 사용자 인터페이스 구축
