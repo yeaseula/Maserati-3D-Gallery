@@ -4,8 +4,6 @@ import { Environment, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function CarModel({modalPath,colors,calliper}) {
-    useGLTF.preload('/glb/optimized/levante.glb');
-    useGLTF.preload('/glb/optimized/cielo.glb');
 
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
         const gltf = useGLTF(`/glb/optimized/${modalPath}`);

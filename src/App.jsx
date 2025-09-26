@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useGLTF } from "@react-three/drei";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 
@@ -13,6 +14,10 @@ function App() {
 }
 
 function AppInner() {
+
+  useGLTF.preload('/glb/optimized/levante.glb');
+  useGLTF.preload('/glb/optimized/cielo.glb');
+
   const location = useLocation();
   const [currentlocation,setCurrentLocation] = useState('cielo');
 
