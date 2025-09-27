@@ -6,6 +6,7 @@ import { Environment, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from '@react-three/fiber';
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
+import { useEffect } from "react";
 
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/draco/');
@@ -14,7 +15,7 @@ dracoLoader.setWorkerLimit(2);
 const loader = new GLTFLoader();
 
 
-export default function CarModel({modalPath,colors,calliper}) {
+export default function CarModel({modalPath,colors,calliper,setLoadState}) {
 
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
 
@@ -22,6 +23,11 @@ export default function CarModel({modalPath,colors,calliper}) {
             loaders.setDRACOLoader(dracoLoader)
             loaders.setMeshoptDecoder(MeshoptDecoder)
         })
+
+        useEffect(()=>{
+            if(!gltf) return;
+            setLoadState(true)
+        },[gltf])
 
         useMemo(() => {
             gltf.scene.traverse((child) => {

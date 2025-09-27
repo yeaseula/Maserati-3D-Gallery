@@ -36,7 +36,7 @@ export default function Light({LightPower}){
 
     return (
         <>
-            <ambientLight intensity={2} color={'white'}></ambientLight>
+            <ambientLight intensity={0.1} color={'white'}></ambientLight>
             <SpotLightCunstom1 color="#FFDDA0" position={[4, 4, 4]} intensity={LightPower}></SpotLightCunstom1>
             <SpotLightCunstom2 color="#FFDDA0" position={[-5,5,-5]} intensity={8}></SpotLightCunstom2>
             <directionalLight color="#ffffff" intensity={3} position={[5,10,3]} castShadow />

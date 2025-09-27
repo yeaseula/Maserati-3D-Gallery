@@ -16,6 +16,7 @@ function App() {
 function AppInner() {
 
   const location = useLocation();
+  const [loadState,setLoadState] = useState(false)
   const [currentlocation,setCurrentLocation] = useState('cielo');
 
   useEffect(()=>{
@@ -25,9 +26,9 @@ function AppInner() {
 
   return (
         <>
-          <NavBar currentlocation={currentlocation}/>
+          <NavBar loadState={loadState} currentlocation={currentlocation}/>
           <h2 className="sr-only">마세라티 3D 전시장 - {currentlocation} 모델</h2>
-          <Showroom product={currentlocation} setCurrentLocation={setCurrentLocation}/>
+          <Showroom product={currentlocation} loadState={loadState} setLoadState={setLoadState} setCurrentLocation={setCurrentLocation}/>
         </>
   )
 }

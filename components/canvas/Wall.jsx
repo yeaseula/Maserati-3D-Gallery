@@ -7,6 +7,7 @@ export default function Wall({window}) {
     useTexture.preload('/image/tree-background2.jpg');
     useTexture.preload('/image/city.jpg');
     useTexture.preload('/image/city2.jpg');
+    useTexture.preload('/image/maserati-logo.png');
 
     function LogoWall() {
         const logoImage = useTexture('/image/maserati-logo.png')

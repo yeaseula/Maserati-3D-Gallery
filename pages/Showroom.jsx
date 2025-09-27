@@ -16,7 +16,7 @@ const modelMap = {
         position: [0,-0.75,0],
         scale: [100,100,100],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 10,
+        lightpower: 5,
         defaultColor: '#DDDDDD'
     },
     cielo: {
@@ -24,7 +24,7 @@ const modelMap = {
         position: [0,-0.75,0],
         scale: [108,108,108],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 10,
+        lightpower: 1,
         defaultColor: '#a1a8af'
     }
 }
@@ -43,7 +43,7 @@ function ResponsiveCamera() {
     return null
 }
 
-export default function Showroom({product,setCurrentLocation}) {
+export default function Showroom({product,loadState,setLoadState,setCurrentLocation}) {
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
     const [colors,setColors] = useState('#DDDDDD')
@@ -56,31 +56,35 @@ export default function Showroom({product,setCurrentLocation}) {
     },[product])
 
     return (
-        <section className="w-[100vw] h-[100vh]">
-            <ChangerButton sideState={sideState} setSideState={setSideState}/>
-            <Canvas shadows
-            camera={{ position:[5,1,5], fov: 50 }}
-            className="w-[100vw] h-[100vh]"
-            >
-                <ResponsiveCamera/>
-                <color attach="background" args={['#fafafa']} />
-                <Light LightPower={LightPower}/>
-                <CarModel
-                    modalPath={modalPath}
-                    colors={colors}
-                    calliper={calliper}
+        <main>
+            <section className="w-[100vw] h-[100vh]">
+                <ChangerButton sideState={sideState} loadState={loadState} setSideState={setSideState}/>
+                <Canvas shadows
+                camera={{ position:[5,1,5], fov: 50 }}
+                className="w-[100vw] h-[100vh]"
+                >
+                    <ResponsiveCamera/>
+                    <color attach="background" args={['#fafafa']} />
+                    <Light LightPower={LightPower}/>
+                    <CarModel
+                        modalPath={modalPath}
+                        colors={colors}
+                        calliper={calliper}
+                        setLoadState={setLoadState}
+                    />
+                    <Wall window={windowState} />
+                    <OrbitControls></OrbitControls>
+                </Canvas>
+                <SideMenu
+                selectedColor={setColors}
+                product={product}
+                selectedWindow={setWindowState}
+                selectedCalliper={setCalliper}
+                sideState={sideState}
+                loadState={loadState}
                 />
-                <Wall window={windowState} />
-                <OrbitControls></OrbitControls>
-            </Canvas>
-            <SideMenu
-            selectedColor={setColors}
-            product={product}
-            selectedWindow={setWindowState}
-            selectedCalliper={setCalliper}
-            sideState={sideState}
-            />
 
-        </section>
+            </section>
+        </main>
     )
 }
