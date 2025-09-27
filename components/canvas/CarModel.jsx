@@ -99,7 +99,7 @@ export default function CarModel({modalPath,colors,calliper}) {
                 calliper={calliper}
                 ></ProductCall>
                 <Environment
-                    files="/hdr/tree-background.hdr"
+                    files="/hdr/tree-hdr.hdr"
                     background={false}
                     path=""
                     preset={null}
