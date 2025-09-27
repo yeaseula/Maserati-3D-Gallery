@@ -20,7 +20,7 @@ const modelMap = {
         defaultColor: '#DDDDDD'
     },
     cielo: {
-        modalPath: 'cielo-preload-lower.glb',
+        modalPath: 'cielo-lower-meshopt.glb',
         position: [0,-0.75,0],
         scale: [108,108,108],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
@@ -62,17 +62,24 @@ export default function Showroom({product,setCurrentLocation}) {
             camera={{ position:[5,1,5], fov: 50 }}
             className="w-[100vw] h-[100vh]"
             >
-
-
+                <ResponsiveCamera/>
+                <color attach="background" args={['#fafafa']} />
+                <Light LightPower={LightPower}/>
                 <CarModel
                     modalPath={modalPath}
                     colors={colors}
                     calliper={calliper}
                 />
-
-
+                <Wall window={windowState} />
+                <OrbitControls></OrbitControls>
             </Canvas>
-
+            <SideMenu
+            selectedColor={setColors}
+            product={product}
+            selectedWindow={setWindowState}
+            selectedCalliper={setCalliper}
+            sideState={sideState}
+            />
 
         </section>
     )
