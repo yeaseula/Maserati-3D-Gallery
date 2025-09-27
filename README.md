@@ -110,7 +110,7 @@ graph TD
     ```
 4.  **바로가기**
 
-   [Maserati 3D Gallery](https://maserati-3d-gallery.netlify.app/)
+   [Maserati 3D Gallery](https://maserati-3d-gallery.pages.dev/)
 
 
 ## 8. 프로젝트 구조
@@ -174,7 +174,17 @@ graph TD
 
 ### 5. 성능 최적화 이슈
 - **문제**: 고해상도 glb 모델 로드 시 로드 속도 저하
-- **해결**:  `dracoLoader`로 모델 압축 (13.6MB -> 4.3MB) 후 Meshoptimizer을 활용해 GPU 친화적 메시 최적화 진행
+- **해결**:  `dracoLoader`로 모델 압축 (13.6MB -> 4.3MB) 후 setMeshoptDecoder(MeshoptDecoder)을 활용해 GPU 친화적 메시 최적화 진행
+```js
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setWorkerLimit(2);
+
+const gltf = useLoader(GLTFLoader, `/glb/optimized/${modalPath}`, loaders => {
+    loaders.setDRACOLoader(dracoLoader)
+    loaders.setMeshoptDecoder(MeshoptDecoder)
+})
+```
 
 ### 6. 에셋 불러오기 에러
 - **문제**: `Uncaught Error: Could not load /src/assets/images/...` 발생.  
