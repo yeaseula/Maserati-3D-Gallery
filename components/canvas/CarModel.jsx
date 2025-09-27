@@ -7,7 +7,6 @@ export default function CarModel({modalPath,colors,calliper}) {
 
 
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
-
         const gltf = useGLTF(`/glb/optimized/${modalPath}`, true);
 
         useMemo(() => {

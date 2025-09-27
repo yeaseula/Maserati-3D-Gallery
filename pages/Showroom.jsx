@@ -12,7 +12,7 @@ import Wall from "../components/canvas/Wall";
 
 const modelMap = {
     levante: {
-        modalPath: 'levante.glb',
+        modalPath: 'levante-lower-meshopt.glb',
         position: [0,-0.75,0],
         scale: [100,100,100],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
@@ -20,7 +20,7 @@ const modelMap = {
         defaultColor: '#DDDDDD'
     },
     cielo: {
-        modalPath: 'cielo.glb',
+        modalPath: 'cielo-lower-meshopt.glb',
         position: [0,-0.75,0],
         scale: [108,108,108],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
