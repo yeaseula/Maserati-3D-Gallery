@@ -20,7 +20,7 @@ const modelMap = {
         defaultColor: '#DDDDDD'
     },
     cielo: {
-        modalPath: 'cielo-lower-meshopt.glb',
+        modalPath: 'cielo.glb',
         position: [0,-0.75,0],
         scale: [108,108,108],
         rotation: [0,(-Math.PI / 2) + 1.45, 0],
