@@ -62,24 +62,17 @@ export default function Showroom({product,setCurrentLocation}) {
             camera={{ position:[5,1,5], fov: 50 }}
             className="w-[100vw] h-[100vh]"
             >
-                <ResponsiveCamera/>
-                <color attach="background" args={['#fafafa']} />
-                <Light LightPower={LightPower}/>
+
+
                 <CarModel
                     modalPath={modalPath}
                     colors={colors}
                     calliper={calliper}
                 />
-                <Wall window={windowState} />
-                <OrbitControls></OrbitControls>
+
+
             </Canvas>
-            <SideMenu
-            selectedColor={setColors}
-            product={product}
-            selectedWindow={setWindowState}
-            selectedCalliper={setCalliper}
-            sideState={sideState}
-            />
+
 
         </section>
     )
