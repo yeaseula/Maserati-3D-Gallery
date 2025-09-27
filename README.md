@@ -173,8 +173,8 @@ graph TD
 - **해결**: `MeshPhysicalMaterial`의 `transmission`, `ior`, `envMapIntensity` 최적화.
 
 ### 5. 성능 최적화 이슈
-- **문제**: 고해상도 모델·조명·애니메이션 때문에 FPS 저하.  
-- **해결**:  `dracoLoader`로 모델 압축 (13.6MB -> 4.3MB)
+- **문제**: 고해상도 glb 모델 로드 시 로드 속도 저하
+- **해결**:  `dracoLoader`로 모델 압축 (13.6MB -> 4.3MB) 후 Meshoptimizer을 활용해 GPU 친화적 메시 최적화 진행
 
 ### 6. 에셋 불러오기 에러
 - **문제**: `Uncaught Error: Could not load /src/assets/images/...` 발생.  
