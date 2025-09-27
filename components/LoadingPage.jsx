@@ -28,7 +28,7 @@ export default function LoadingPage({loadState}){
     <section
         className={`fixed w-screen h-screen bg-gray-50 flex justify-center items-center
             transition-all duration-800
-            ${loadState ? 'opacity-0 z-[-1]' : 'opacity-100 z-[9999]'}
+            ${loadState ? 'opacity-0 z-[-1]' : 'opacity-100 z-[9999999999]'}
         `}
     >
         <div className="text-center">
