@@ -1,13 +1,27 @@
 import React from "react";
+import { DRACOLoader } from "three/examples/jsm/Addons.js";
+import { GLTFLoader } from "three/examples/jsm/Addons.js";
 import { Suspense, lazy, useMemo} from 'react';
 import { Environment, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
+import { useLoader } from '@react-three/fiber';
+
+const dracoLoader = new DRACOLoader();
+dracoLoader.setDecoderPath('/draco/');
+dracoLoader.setWorkerLimit(2);
+
+const loader = new GLTFLoader();
+loader.setDRACOLoader(dracoLoader)
 
 export default function CarModel({modalPath,colors,calliper}) {
 
-
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
-        const gltf = useGLTF(`/glb/optimized/${modalPath}`, true);
+
+        const gltf = useLoader(GLTFLoader, `/glb/optimized/${modalPath}`, loader => {
+            loader.setDRACOLoader(dracoLoader)
+        })
+
+        //const gltf = useGLTF(`/glb/optimized/${modalPath}`, true);
 
         // useMemo(() => {
         //     gltf.scene.traverse((child) => {
