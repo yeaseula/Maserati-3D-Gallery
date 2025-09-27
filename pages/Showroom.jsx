@@ -56,35 +56,34 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
     },[product])
 
     return (
-        <main>
-            <section className="w-[100vw] h-[100vh]">
-                <ChangerButton sideState={sideState} loadState={loadState} setSideState={setSideState}/>
-                <Canvas shadows
-                camera={{ position:[5,1,5], fov: 50 }}
-                className="w-[100vw] h-[100vh]"
-                >
-                    <ResponsiveCamera/>
-                    <color attach="background" args={['#fafafa']} />
-                    <Light LightPower={LightPower}/>
-                    <CarModel
-                        modalPath={modalPath}
-                        colors={colors}
-                        calliper={calliper}
-                        setLoadState={setLoadState}
-                    />
-                    <Wall window={windowState} />
-                    <OrbitControls></OrbitControls>
-                </Canvas>
-                <SideMenu
-                selectedColor={setColors}
-                product={product}
-                selectedWindow={setWindowState}
-                selectedCalliper={setCalliper}
-                sideState={sideState}
-                loadState={loadState}
+        <section className="w-[100vw] h-[100vh]">
+            <h2 className="sr-only">마세라티 3D 전시장 - {product} 모델</h2>
+            <ChangerButton sideState={sideState} loadState={loadState} setSideState={setSideState}/>
+            <Canvas shadows
+            camera={{ position:[5,1,5], fov: 50 }}
+            className="w-[100vw] h-[100vh]"
+            >
+                <ResponsiveCamera/>
+                <color attach="background" args={['#fafafa']} />
+                <Light LightPower={LightPower}/>
+                <CarModel
+                    modalPath={modalPath}
+                    colors={colors}
+                    calliper={calliper}
+                    setLoadState={setLoadState}
                 />
+                <Wall window={windowState} />
+                <OrbitControls></OrbitControls>
+            </Canvas>
+            <SideMenu
+            selectedColor={setColors}
+            product={product}
+            selectedWindow={setWindowState}
+            selectedCalliper={setCalliper}
+            sideState={sideState}
+            loadState={loadState}
+            />
 
-            </section>
-        </main>
+        </section>
     )
 }

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useGLTF } from "@react-three/drei";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
+import LoadingPage from "../components/LoadingPage";
 
 function App() {
   return (
@@ -26,9 +27,13 @@ function AppInner() {
 
   return (
         <>
-          <NavBar loadState={loadState} currentlocation={currentlocation}/>
-          <h2 className="sr-only">마세라티 3D 전시장 - {currentlocation} 모델</h2>
-          <Showroom product={currentlocation} loadState={loadState} setLoadState={setLoadState} setCurrentLocation={setCurrentLocation}/>
+          <LoadingPage loadState={loadState}/>
+          <header>
+            <NavBar loadState={loadState} currentlocation={currentlocation}/>
+          </header>
+          <main>
+            <Showroom product={currentlocation} loadState={loadState} setLoadState={setLoadState} setCurrentLocation={setCurrentLocation}/>
+          </main>
         </>
   )
 }
