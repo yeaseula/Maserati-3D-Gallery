@@ -1,12 +1,14 @@
 import React from "react";
-import { Suspense, useMemo} from 'react';
+import { Suspense, lazy, useMemo} from 'react';
 import { Environment, useGLTF, Html } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function CarModel({modalPath,colors,calliper}) {
 
+
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
-        const gltf = useGLTF(`/glb/optimized/${modalPath}`);
+
+        const gltf = useGLTF(`/glb/optimized/${modalPath}`, true);
 
         useMemo(() => {
             gltf.scene.traverse((child) => {
