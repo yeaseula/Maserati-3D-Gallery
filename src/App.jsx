@@ -15,9 +15,6 @@ function App() {
 
 function AppInner() {
 
-  useGLTF.preload('/glb/optimized/levante.glb');
-  useGLTF.preload('/glb/optimized/cielo.glb');
-
   const location = useLocation();
   const [currentlocation,setCurrentLocation] = useState('cielo');
 
