@@ -29,3 +29,7 @@
 button {
   cursor: pointer;
 }
+
+.changer:focus {
+  outline: 2px solid var(--color-amber-950);
+}

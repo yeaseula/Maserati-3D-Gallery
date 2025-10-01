@@ -11,8 +11,8 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
                 aria-label={`${ele.des} 버튼`}
                 onClick={()=>{handlerFunc(ele.state)}}
                 style={{ backgroundColor: ele.state }}
-                className={`w-8 h-8 rounded-full shadow-2xl overflow-hidden shadow-gray-300/30 ${componentState == ele.state? 'border-3 border-yellow-700' : ""}`}>
-                    {contentsRender(ele)}
+                className={`w-8 h-8 rounded-full shadow-2xl shadow-gray-300/30 ${componentState == ele.state? 'border-3 border-yellow-700' : ""}`}>
+                    <button className="changer-btn w-[100%] h-[100%] rounded-full overflow-hidden">{contentsRender(ele)}</button>
                 </li>
             ))}
         </ul>
