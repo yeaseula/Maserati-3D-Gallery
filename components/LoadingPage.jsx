@@ -1,11 +1,7 @@
-import styled, {keyframes} from "styled-components";
+import styled from "styled-components";
 import { useProgress } from "@react-three/drei";
-import { useRef, useEffect, useState } from "react";
-
-const fill = keyframes`
-    0% { width: 0%; }
-    100% { width: 100%; }
-`;
+import { useRef, useEffect } from "react";
+import { useShowroom } from "./data/context";
 
 const ProgressBarContainer = styled.div`
     margin-top: 50px;
@@ -23,13 +19,12 @@ const Progress = styled.div`
     transition: all 0.3s;
 `;
 
-export default function LoadingPage({loadState}){
+export default function LoadingPage(){
 
-
+    const { loadState } = useShowroom()
     const progressRef = useRef(0)
     const { progress } = useProgress();
 
-    console.log(progressRef.current)
     useEffect(()=>{
         progressRef.current = progress
     },[progress])

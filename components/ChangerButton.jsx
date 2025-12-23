@@ -1,4 +1,6 @@
-export default function ChangerButton({sideState,setSideState}) {
+import { memo } from "react"
+
+const ChangerButton = memo(({sideState,setSideState})=>{
 
     const handleSideMenu = ()=>{
         setSideState(!sideState)
@@ -19,4 +21,6 @@ export default function ChangerButton({sideState,setSideState}) {
             </button>
         </div>
     )
-}
+})
+
+export default ChangerButton

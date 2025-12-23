@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useShowroom } from "./data/context";
 
 const Model = {
     cielo : {
@@ -23,8 +24,9 @@ const Model = {
     },
 }
 
+export default function ModelDescript() {
 
-export default function ModelDescript({product}) {
+    const { currentProduct } = useShowroom()
     const [isClose,setIsClose] = useState(true)
 
     const handleDescription = () => {
@@ -42,9 +44,9 @@ export default function ModelDescript({product}) {
             {!isClose &&
             <div
             className="mt-7 bg-white rounded overflow-hidden transition">
-                <h2 className="mb-2 font-semibold">{Model[product].mainTitle}</h2>
+                <h2 className="mb-2 font-semibold">{Model[currentProduct].mainTitle}</h2>
                 <p className="mb-2 text-sm font-semibold">
-                    {Model[product].subTitle.split('\n').map((line,i)=>(
+                    {Model[currentProduct].subTitle.split('\n').map((line,i)=>(
                         <React.Fragment key={i}>
                         {line}
                         <br />
@@ -52,12 +54,12 @@ export default function ModelDescript({product}) {
                     ))}
                     </p>
                 <ul className="text-xs">
-                    <li>{Model[product].model}</li>
-                    <li>{Model[product].engine}</li>
-                    <li>{Model[product].output}</li>
-                    <li>{Model[product].speed}</li>
-                    <li>{Model[product].maxSpeed}</li>
-                    <li>{Model[product].desc}</li>
+                    <li>{Model[currentProduct].model}</li>
+                    <li>{Model[currentProduct].engine}</li>
+                    <li>{Model[currentProduct].output}</li>
+                    <li>{Model[currentProduct].speed}</li>
+                    <li>{Model[currentProduct].maxSpeed}</li>
+                    <li>{Model[currentProduct].desc}</li>
                 </ul>
             </div>
             }

@@ -1,46 +1,19 @@
-import { useState, memo } from "react";
+import { useState, memo, useCallback } from "react";
 import ChangerMenu from "./ChangerMenu";
+import { windowImg } from "./data/carData";
+import { useShowroom } from "./data/context";
 
-const WindowChanger = memo(({selectedWindow})=>{
-    const windowImg = [
-        {
-            id:1,
-            title: '배경1',
-            state: '/image/tree-background.jpg',
-            des: '단풍으로 물든 숲 속',
-            default: true
-        },
-        {
-            id:2,
-            title: '배경2',
-            state: '/image/tree-background2.jpg',
-            des: '푸른 녹음이 가득한 여름날',
-            default: false
-        },
-        {
-            id:3,
-            title: '배경3',
-            state: '/image/city.jpg',
-            des: '야경 속 강변 드라이브',
-            default: false
-        },
-        {
-            id:4,
-            title: '배경4',
-            state: '/image/city2.jpg',
-            des: '도시의 불빛',
-            default: false
-        },
-    ]
+const WindowChanger = memo(()=>{
+    const { setWindowState } = useShowroom()
 
-    const [windowState,setWindowState] = useState(
+    const [selectWindow,setSelectWindow] = useState(
         windowImg.find((ele)=>ele.default)?.state || windowImg[0].state
     )
 
-    const onhandleBackImg = (src) => {
-        selectedWindow(src);
+    const onhandleBackImg = useCallback((src)=>{
         setWindowState(src);
-    }
+        setSelectWindow(src);
+    },[setWindowState, setSelectWindow])
 
     return (
         <>
@@ -48,7 +21,7 @@ const WindowChanger = memo(({selectedWindow})=>{
                 classTitle={"window-changer"}
                 menuTitle={"배경"}
                 dataTarget={windowImg}
-                componentState={windowState}
+                componentState={selectWindow}
                 handlerFunc={onhandleBackImg}
                 contentsRender={(ele)=>(
                     <img src={ele.state} alt={ele.des} className="w-full h-full object-cover" />
@@ -58,6 +31,5 @@ const WindowChanger = memo(({selectedWindow})=>{
         </>
     )
 })
-
 
 export default WindowChanger

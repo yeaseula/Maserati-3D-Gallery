@@ -7,13 +7,16 @@ import * as THREE from "three";
 import { useLoader } from '@react-three/fiber';
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
 import { useEffect } from "react";
+import { useShowroom } from "../data/context";
 
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/draco/');
 dracoLoader.setWorkerLimit(2);
 
 
-export default function CarModel({modalPath,colors,calliper,setLoadState}) {
+export default function CarModel({modalPath,colors,calliper}) {
+
+    const { setLoadState } = useShowroom()
 
     function ProductCall({modalPath,position,scale,rotation,colors,calliper}) {
 

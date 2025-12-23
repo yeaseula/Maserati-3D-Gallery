@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Canvas,useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
@@ -9,24 +8,9 @@ import CarModel from "../components/canvas/CarModel";
 import Light from "../components/canvas/Light";
 import Wall from "../components/canvas/Wall";
 
-const modelMap = {
-    levante: {
-        modalPath: 'levante-lower-meshopt.glb',
-        position: [0,-0.75,0],
-        scale: [100,100,100],
-        rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 5,
-        defaultColor: '#DDDDDD'
-    },
-    cielo: {
-        modalPath: 'cielo.glb',
-        position: [0,-0.75,0],
-        scale: [108,108,108],
-        rotation: [0,(-Math.PI / 2) + 1.45, 0],
-        lightpower: 1,
-        defaultColor: '#a1a8af'
-    }
-}
+import { useShowroom } from '../components/data/context';
+import { useLocation } from 'react-router-dom';
+import { modelMap } from "../components/data/carData"
 
 function ResponsiveCamera() {
     const { camera } = useThree()
@@ -42,16 +26,24 @@ function ResponsiveCamera() {
     return null
 }
 
-export default function Showroom({product,loadState,setLoadState,setCurrentLocation}) {
+export default function Showroom() {
+    const location = useLocation()
+    const {
+        loadState,
+        setCurrentProduct,
+        colors, setColors,
+        windowState, setWindowState,
+        calliper, setCalliper } = useShowroom();
+
+    const product = location.pathname === '/levante' ? 'levante' : 'cielo';
     const modalPath = modelMap[product] || modelMap['levante'];
     const LightPower = modelMap[product].lightpower || modelMap['levante'].lightpower;
-    const [colors,setColors] = useState('#DDDDDD')
-    const [windowState,setWindowState] = useState('/image/tree-background.jpg')
-    const [calliper,setCalliper] = useState('#314aad')
+
     const [sideState,setSideState] = useState(true)
+
     useEffect(()=>{
-        setColors(modalPath.defaultColor);
-        setCurrentLocation(product);
+        setColors(modalPath.defaultColor); //모델 변경 시 해당 모델의 default 컬러로 전환
+        setCurrentProduct(product);
     },[product])
 
     return (
@@ -62,10 +54,6 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
                 sideState={sideState}
                 setSideState={setSideState}/>
                 <SideMenu
-                product={product}
-                selectedColor={setColors}
-                selectedWindow={setWindowState}
-                selectedCalliper={setCalliper}
                 sideState={sideState}
                 />
             </div>
@@ -80,7 +68,6 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
                     modalPath={modalPath}
                     colors={colors}
                     calliper={calliper}
-                    setLoadState={setLoadState}
                 />
                 <Wall window={windowState} />
                 <OrbitControls />

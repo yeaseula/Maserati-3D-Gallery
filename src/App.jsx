@@ -4,6 +4,8 @@ import { useState, useEffect, useRef } from "react";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 import LoadingPage from "../components/LoadingPage";
+import { ShowroomProvider } from "../components/data/context";
+import { useShowroom } from "../components/data/context";
 
 function App() {
   return (
@@ -16,29 +18,17 @@ function App() {
 function AppInner() {
 
   const location = useLocation();
-  const [loadState,setLoadState] = useState(0)
-  const [currentlocation,setCurrentLocation] = useState('cielo');
-
-
-  useEffect(()=>{
-    if (location.pathname === '/levante') setCurrentLocation('levante');
-    else setCurrentLocation('cielo');
-  },[location.pathname])
 
   return (
-        <>
-          <LoadingPage loadState={loadState}/>
+        <ShowroomProvider>
+          <LoadingPage/>
           <header>
-            <NavBar loadState={loadState} currentlocation={currentlocation}/>
+            <NavBar/>
           </header>
           <main>
-            <Showroom
-            product={currentlocation}
-            loadState={loadState}
-            setLoadState={setLoadState}
-            setCurrentLocation={setCurrentLocation}/>
+            <Showroom/>
           </main>
-        </>
+        </ShowroomProvider>
   )
 }
 
