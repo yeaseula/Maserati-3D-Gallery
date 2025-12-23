@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 import ChangerMenu from "./ChangerMenu";
 
-export default function WindowChanger({selectedWindow}) {
+const WindowChanger = memo(({selectedWindow})=>{
     const windowImg = [
         {
             id:1,
@@ -57,4 +57,7 @@ export default function WindowChanger({selectedWindow}) {
             />
         </>
     )
-}
+})
+
+
+export default WindowChanger

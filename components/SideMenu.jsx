@@ -4,7 +4,7 @@ import ColorChanger from "./ColorChanger";
 import CalliperChanger from './CalliperChanger';
 import ModelDescript from "./ModelDescript";
 
-export const SideMenu = memo(({selectedColor, product, selectedWindow, selectedCalliper,sideState, loadState})=>{
+const SideMenu = memo(({selectedColor, product, selectedWindow, selectedCalliper,sideState, loadState})=>{
     return (
         <aside className={`side-menu fixed bottom-0 md:bottom-auto md:top-1/2  md:-translate-y-1/2
     z-[999] bg-white p-5 rounded-lg shadow transition-all duration-500

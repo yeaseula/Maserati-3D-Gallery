@@ -1,8 +1,8 @@
-import React from "react";
+import { memo } from "react";
 import { useState } from "react";
 import ChangerMenu from "./ChangerMenu";
 
-export default function CalliperChanger ({selectedCalliper}) {
+const CalliperChanger = memo(({selectedCalliper})=>{
     const calliper = [
         {
             id:1,
@@ -63,4 +63,6 @@ export default function CalliperChanger ({selectedCalliper}) {
             />
         </>
     )
-}
+})
+
+export default CalliperChanger

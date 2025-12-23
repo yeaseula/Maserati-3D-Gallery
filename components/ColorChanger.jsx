@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import ChangerMenu from "./ChangerMenu";
 
-export default function ColorChanger ({selectedColor,product}) {
+const ColorChanger = memo(({selectedColor,product})=>{
     const ColorChart = {
         levante: [
             {
@@ -91,4 +91,4 @@ export default function ColorChanger ({selectedColor,product}) {
             />
         </>
     )
-}
+})
