@@ -23,7 +23,7 @@ export default function LoadingPage(){
 
     const { loadState } = useShowroom()
     const progressRef = useRef(0)
-    const { progress } = useProgress();
+    const { progress } = useProgress()
 
     useEffect(()=>{
         progressRef.current = progress

@@ -32,8 +32,8 @@ export default function Showroom() {
         loadState,
         setCurrentProduct,
         colors, setColors,
-        windowState, setWindowState,
-        calliper, setCalliper } = useShowroom();
+        windowState,
+        calliper } = useShowroom();
 
     const product = location.pathname === '/levante' ? 'levante' : 'cielo';
     const modalPath = modelMap[product] || modelMap['levante'];
