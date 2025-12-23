@@ -1,8 +1,8 @@
-import React from "react";
+
 import { DRACOLoader } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/Addons.js";
-import { Suspense, lazy, useMemo} from 'react';
-import { Environment, useGLTF, Html } from "@react-three/drei";
+import { Suspense, useMemo} from 'react';
+import { Environment, Html } from "@react-three/drei";
 import * as THREE from "three";
 import { useLoader } from '@react-three/fiber';
 import { MeshoptDecoder } from "three/examples/jsm/libs/meshopt_decoder.module.js";
@@ -11,8 +11,6 @@ import { useEffect } from "react";
 const dracoLoader = new DRACOLoader();
 dracoLoader.setDecoderPath('/draco/');
 dracoLoader.setWorkerLimit(2);
-
-const loader = new GLTFLoader();
 
 
 export default function CarModel({modalPath,colors,calliper,setLoadState}) {
@@ -81,7 +79,7 @@ export default function CarModel({modalPath,colors,calliper,setLoadState}) {
                 <primitive
                 object={gltf.scene}
                 castShadow
-                ></primitive>
+                />
             </group>
         )
     }
@@ -103,7 +101,7 @@ export default function CarModel({modalPath,colors,calliper,setLoadState}) {
                 rotation={modalPath.rotation}
                 colors={colors}
                 calliper={calliper}
-                ></ProductCall>
+                />
                 <Environment
                     files="/hdr/tree-hdr.hdr"
                     background={false}

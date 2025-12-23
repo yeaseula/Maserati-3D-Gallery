@@ -1,4 +1,4 @@
-export default function ChangerButton({sideState,loadState,setSideState}) {
+export default function ChangerButton({sideState,setSideState}) {
 
     const handleSideMenu = ()=>{
         setSideState(!sideState)
@@ -6,8 +6,7 @@ export default function ChangerButton({sideState,loadState,setSideState}) {
 
     return(
         <div className={`absolute top-[12%] md:top-[2%] right-4 md:right-10 z-999
-        flex items-center gap-2 ${loadState ? 'opacity-100' : 'opacity-0'} duration-400`}
-        aria-hidden={!loadState}
+        flex items-center gap-2 duration-400`}
         >
             <span className="text-xs text-yellow-700">사이드메뉴</span>
             <p className="sr-only">{sideState ? '사이드 메뉴가 열려있습니다':'사이드 메뉴가 닫혀있습니다'}</p>

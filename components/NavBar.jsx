@@ -1,6 +1,7 @@
 import {Link} from 'react-router-dom';
+import { memo } from 'react';
 
-export default function NavBar({loadState,currentlocation}){
+const NavBar = memo(({loadState,currentlocation})=>{
 
     return (
         <nav className={`navbar w-[100%] pl-4 pr-4 fixed top-6 left-[50%]
@@ -17,4 +18,6 @@ export default function NavBar({loadState,currentlocation}){
             </ul>
         </nav>
     )
-}
+})
+
+export default NavBar

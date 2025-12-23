@@ -1,5 +1,6 @@
 import styled, {keyframes} from "styled-components";
-
+import { useProgress } from "@react-three/drei";
+import { useRef, useEffect, useState } from "react";
 
 const fill = keyframes`
     0% { width: 0%; }
@@ -18,11 +19,20 @@ const ProgressBarContainer = styled.div`
 const Progress = styled.div`
     height: 100%;
     background-color: #facc15;
-    width: 0;
-    animation: ${fill} 2s forwards;
+    width: ${(p)=>Number(p.$width)}%;
+    transition: all 0.3s;
 `;
 
 export default function LoadingPage({loadState}){
+
+
+    const progressRef = useRef(0)
+    const { progress } = useProgress();
+
+    console.log(progressRef.current)
+    useEffect(()=>{
+        progressRef.current = progress
+    },[progress])
 
     return (
     <section
@@ -38,8 +48,9 @@ export default function LoadingPage({loadState}){
             />
 
             <ProgressBarContainer>
-                <Progress/>
+                <Progress $width={progressRef.current}/>
             </ProgressBarContainer>
+            <p className="mt-4 font-medium">{Math.floor(progressRef.current)}%</p>
         </div>
     </section>
     )

@@ -57,7 +57,18 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
     return (
         <section className="w-[100vw] h-[100vh] z-100">
             <h2 className="sr-only">마세라티 3D 전시장 - {product} 모델</h2>
-            <ChangerButton sideState={sideState} loadState={loadState} setSideState={setSideState}/>
+            <div className={`${loadState ? 'opacity-100' : 'opacity-0'}`}>
+                <ChangerButton
+                sideState={sideState}
+                setSideState={setSideState}/>
+                <SideMenu
+                product={product}
+                selectedColor={setColors}
+                selectedWindow={setWindowState}
+                selectedCalliper={setCalliper}
+                sideState={sideState}
+                />
+            </div>
             <Canvas shadows
             camera={{ position:[5,1,5], fov: 50 }}
             className="w-[100vw] h-[100vh]"
@@ -74,15 +85,6 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
                 <Wall window={windowState} />
                 <OrbitControls />
             </Canvas>
-            <SideMenu
-            selectedColor={setColors}
-            product={product}
-            selectedWindow={setWindowState}
-            selectedCalliper={setCalliper}
-            sideState={sideState}
-            loadState={loadState}
-            />
-
         </section>
     )
 }

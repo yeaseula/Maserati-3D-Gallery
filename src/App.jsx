@@ -1,6 +1,6 @@
 
 import { BrowserRouter, useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 import LoadingPage from "../components/LoadingPage";
@@ -16,8 +16,9 @@ function App() {
 function AppInner() {
 
   const location = useLocation();
-  const [loadState,setLoadState] = useState(false)
+  const [loadState,setLoadState] = useState(0)
   const [currentlocation,setCurrentLocation] = useState('cielo');
+
 
   useEffect(()=>{
     if (location.pathname === '/levante') setCurrentLocation('levante');
@@ -31,7 +32,11 @@ function AppInner() {
             <NavBar loadState={loadState} currentlocation={currentlocation}/>
           </header>
           <main>
-            <Showroom product={currentlocation} loadState={loadState} setLoadState={setLoadState} setCurrentLocation={setCurrentLocation}/>
+            <Showroom
+            product={currentlocation}
+            loadState={loadState}
+            setLoadState={setLoadState}
+            setCurrentLocation={setCurrentLocation}/>
           </main>
         </>
   )
