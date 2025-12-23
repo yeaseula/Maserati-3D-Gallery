@@ -1,23 +1,24 @@
 
-import { BrowserRouter, useLocation } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 import LoadingPage from "../components/LoadingPage";
 import { ShowroomProvider } from "../components/data/context";
-import { useShowroom } from "../components/data/context";
+import NotFound from "../pages/NotFound";
 
 function App() {
   return (
     <BrowserRouter>
-      <AppInner />
+      <Routes>
+        <Route path="/" element={<AppInner />}></Route>
+        <Route path="/levante" element={<AppInner />}></Route>
+        <Route path="*" element={<NotFound />} />
+      </Routes>
     </BrowserRouter>
   );
 }
 
 function AppInner() {
-
-  const location = useLocation();
 
   return (
         <ShowroomProvider>
