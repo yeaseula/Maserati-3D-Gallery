@@ -8,11 +8,15 @@ export default function ChangerMenu({classTitle, menuTitle, dataTarget, componen
         <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
             {dataTarget.map((ele)=>(
                 <li data-color={ele.state} data-text={ele.des} key={ele.des}
-                aria-label={`${ele.des} 버튼`}
                 onClick={()=>{handlerFunc(ele.state)}}
                 style={{ backgroundColor: ele.state }}
                 className={`w-8 h-8 rounded-full shadow-2xl shadow-gray-300/30 ${componentState == ele.state? 'border-3 border-yellow-700' : ""}`}>
-                    <button className="changer-btn w-[100%] h-[100%] rounded-full overflow-hidden">{contentsRender(ele)}</button>
+                    <button
+                    className="changer-btn w-[100%] h-[100%] rounded-full overflow-hidden"
+                    aria-label={`${ele.des} 버튼`}
+                    >
+                        {contentsRender(ele)}
+                    </button>
                 </li>
             ))}
         </ul>

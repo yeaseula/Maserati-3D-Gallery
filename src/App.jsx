@@ -1,7 +1,6 @@
-import React from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+
+import { BrowserRouter, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useGLTF } from "@react-three/drei";
 import Showroom from '../pages/Showroom'
 import NavBar from '../components/NavBar'
 import LoadingPage from "../components/LoadingPage";

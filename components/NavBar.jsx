@@ -5,7 +5,9 @@ export default function NavBar({loadState,currentlocation}){
 
     return (
         <nav className={`navbar w-[100%] pl-4 pr-4 fixed top-6 left-[50%]
-        translate-x-[-50%] z-99 ${loadState ? 'opacity-100' : 'opacity-0'} duration-400`}>
+        translate-x-[-50%] z-99 ${loadState ? 'opacity-100' : 'opacity-0'} duration-400`}
+        aria-hidden={!loadState}
+        >
             <ul className="flex justify-center gap-5">
                 <li className={`${currentlocation=='cielo' ? 'bg-yellow-400 hover:bg-yellow-600 shadow-lg shadow-yellow-500/50':'bg-gray-300 hover:bg-gray-600'} rounded transition`}>
                     <Link to="/" className="inline-block text-white text-sm md:text-lg text-center pt-1 pb-1 pl-5 pr-5">2023 Maserati MC20 Cielo</Link>

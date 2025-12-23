@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ChangerMenu from "./ChangerMenu";
 
 export default function WindowChanger({selectedWindow}) {

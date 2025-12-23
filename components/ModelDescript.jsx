@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Model = {
     cielo : {
@@ -23,32 +23,31 @@ const Model = {
     },
 }
 
-const handleDescription = (e) => {
-    const modelDes = document.querySelector('.model-detail-des');
-    if(e.currentTarget.classList.contains('on')){
-        e.currentTarget.classList.remove('on');
-        e.currentTarget.textContent='설명 보기';
-        modelDes.style.height = 0
-    } else {
-        e.currentTarget.classList.add('on')
-        e.currentTarget.textContent='설명 닫기'
-        modelDes.style.height = 'auto'
-    }
-}
+
 export default function ModelDescript({product}) {
+    const [isClose,setIsClose] = useState(true)
+
+    const handleDescription = () => {
+        setIsClose(!isClose)
+    }
+
     return (
         <>
         <div className="mt-6">
             <button
             onClick={handleDescription}
-            className="w-[100%] bg-yellow-400 hover:bg-yellow-600 text-white transition p-2 rounded font-semibold">설명 보기</button>
-            <div className="model-detail-des mt-7 bg-white rounded h-0 overflow-hidden transition">
+            className="w-[100%] bg-yellow-400 hover:bg-yellow-600 text-white transition p-2 rounded font-semibold">
+                {isClose ? '설명 보기' : '설명 닫기'}
+            </button>
+            {!isClose &&
+            <div
+            className="mt-7 bg-white rounded overflow-hidden transition">
                 <h2 className="mb-2 font-semibold">{Model[product].mainTitle}</h2>
                 <p className="mb-2 text-sm font-semibold">
                     {Model[product].subTitle.split('\n').map((line,i)=>(
                         <React.Fragment key={i}>
                         {line}
-                        <br></br>
+                        <br />
                         </React.Fragment>
                     ))}
                     </p>
@@ -61,6 +60,7 @@ export default function ModelDescript({product}) {
                     <li>{Model[product].desc}</li>
                 </ul>
             </div>
+            }
         </div>
         </>
     )

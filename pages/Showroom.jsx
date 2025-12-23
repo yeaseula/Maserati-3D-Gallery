@@ -1,8 +1,7 @@
-import React from "react";
+
 import { useState, useEffect } from 'react';
 import { Canvas,useThree } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import * as THREE from "three";
 import SideMenu from "../components/SideMenu";
 import ChangerButton from "../components/ChangerButton";
 
@@ -73,7 +72,7 @@ export default function Showroom({product,loadState,setLoadState,setCurrentLocat
                     setLoadState={setLoadState}
                 />
                 <Wall window={windowState} />
-                <OrbitControls></OrbitControls>
+                <OrbitControls />
             </Canvas>
             <SideMenu
             selectedColor={setColors}

@@ -30,9 +30,12 @@ export default function LoadingPage({loadState}){
             transition-all duration-800
             ${loadState ? 'opacity-0 z-[-1]' : 'opacity-100 z-[9999999999]'}
         `}
+        aria-hidden={!loadState}
     >
         <div className="text-center">
-            <img src="/image/load-text.svg" alt="당신만의 마세라티 지금 시작됩니다. 로딩을 기다려주세요." />
+            <img src="/image/load-text.svg"
+            alt="당신만의 마세라티 지금 시작됩니다. 로딩을 기다려주세요."
+            />
 
             <ProgressBarContainer>
                 <Progress/>
