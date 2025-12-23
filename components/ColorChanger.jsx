@@ -92,3 +92,5 @@ const ColorChanger = memo(({selectedColor,product})=>{
         </>
     )
 })
+
+export default ColorChanger
