@@ -11,7 +11,7 @@ const ChangerMenu = memo(({
 })=>{ return (
         <>
         <section className={`${classTitle} ${style? 'mt-6 pt-6 border-t-1 border-gray-300': ''}`}>
-            <h2 className="-only">{menuTitle} 선택</h2>
+            <h2 className="sr-only">{menuTitle} 선택</h2>
             <p className="mb-4 text-center text-lg font-semibold">{menuTitle}</p>
             <ul className="flex justify-center gap-3 rounded-full bg-gray-200 pr-4 pl-4 pt-1.5 pb-1.5">
                 {dataTarget.map((ele)=>(
